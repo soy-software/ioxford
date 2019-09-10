@@ -21,11 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->string('cedula')->nullable();
-            $table->string('nombres')->nullable();
-            $table->string('apellidos')->nullable();
-            $table->string('telefono_representante')->nullable();
+            $table->string('identificacion')->nullable();
+            $table->string('nombres_representante')->nullable();
+            $table->string('identificacion_representante')->nullable();
+            $table->string('celular_representante')->nullable();
             $table->string('email_representante')->nullable();
+            $table->string('messenger_representante')->nullable();
         });
     }
 

@@ -39,6 +39,9 @@ Route::post('/paralelos-guardar', 'ParaleloController@guardar')->name('paralelos
 Route::get('/paralelos-eliminar/{id}', 'ParaleloController@eliminar')->name('eliminarParalelo');
 // estudiantes
 Route::get('/estudiantes/{paralelo}', 'EstudianteController@index')->name('estudiantes');
+Route::post('/estudiantes-guardar', 'EstudianteController@guardar')->name('guardarEstudiante');
+// mensajes
+Route::post('/estudiantes-enviar-mensajes', 'EstudianteController@enviarMensaje')->name('enviarMensaje');
 
 
 // routusuarios
