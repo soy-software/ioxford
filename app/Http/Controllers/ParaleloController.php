@@ -36,7 +36,7 @@ class ParaleloController extends Controller
        
         }
         
-        $request->session()->flash('success','Paralelos actualizados');
+        $request->session()->flash('success','Paralelos creado');
         
         return redirect()->route('cursos',['tipo'=>$request->tipo,'periodo'=>$request->periodo]);
     }

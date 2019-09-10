@@ -93,7 +93,7 @@
                                     </table>
                                 </div>
         
-                                <button type="submit" class="btn btn-deep-purple">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                                     
@@ -140,26 +140,34 @@
                 closeIcon: true,
                 closeIconClass: 'fas fa-times',
                 buttons: {
-                    confirmar: function () {
-                        $.blockUI({message:'<h1>Espere por favor.!</h1>'});
-                        $.post( $(arg).data('url'),{user:$(arg).data('id')})
-                        .done(function( data ) {
-                            if(data.success){
-                                $('#dataTableBuilder').DataTable().draw(false);
-                                $.notify(""+data.success, "success");
-                            }
-                            if(data.default){
-                                $.notify(""+data.default, "info");
-                            }
-                            
-                        }).always(function(){
-                            $.unblockUI();
-                        }).fail(function(){
-                            $.notify("Ocurrio un error", "error");
-                        });
+                    confirmar: {
+                        text: 'Confirmar', // text for button
+                        btnClass: 'btn-primary', // class for the button
+                        action: function(heyThereButton){
+                            $.blockUI({message:'<h1>Espere por favor.!</h1>'});
+                            $.post( $(arg).data('url'),{user:$(arg).data('id')})
+                            .done(function( data ) {
+                                if(data.success){
+                                    $('#dataTableBuilder').DataTable().draw(false);
+                                    $.notify(""+data.success, "success");
+                                }
+                                if(data.default){
+                                    $.notify(""+data.default, "info");
+                                }
+                                
+                            }).always(function(){
+                                $.unblockUI();
+                            }).fail(function(){
+                                $.notify("Ocurrio un error", "error");
+                            });
+                        }
                     },
-                    cancelar: function () {
-                        
+                    
+                    cancelar: {
+                        text: 'Cancelar', // text for button
+                        btnClass: 'btn-secondary', // class for the button
+                        action: function(heyThereButton){
+                        }
                     }
                 }
             });

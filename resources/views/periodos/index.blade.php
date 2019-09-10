@@ -53,35 +53,35 @@
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                         @can('actualizar', $per)
-                                                            <a href="" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
+                                                            <a href="{{ route('editarPeriodo',$per->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
                                                         @endcan
 
                                                         @can('Preparatoría', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'PRE','periodo'=>$per->id]) }}" class="btn btn-purple" data-toggle="tooltip" data-placement="top" title="Preparatoría">
+                                                            <a href="{{ route('cursos',['tipo'=>'PRE','periodo'=>$per->id]) }}" class="btn primary-color-dark text-white" data-toggle="tooltip" data-placement="top" title="Preparatoría">
                                                                 Preparatoría
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Básica elemental', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BE','periodo'=>$per->id]) }}" class="btn btn-deep-purple" data-toggle="tooltip" data-placement="top" title="Básica elemental">
+                                                            <a href="{{ route('cursos',['tipo'=>'BE','periodo'=>$per->id]) }}" class="btn primary-color text-white" data-toggle="tooltip" data-placement="top" title="Básica elemental">
                                                                 B.elemental
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Básica media', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BM','periodo'=>$per->id]) }}" class="btn btn-indigo" data-toggle="tooltip" data-placement="top" title="Básica media">
+                                                            <a href="{{ route('cursos',['tipo'=>'BM','periodo'=>$per->id]) }}" class="btn info-color text-white" data-toggle="tooltip" data-placement="top" title="Básica media">
                                                                 B.media
                                                             </a>
                                                         @endcan
                                                        
                                                         @can('Básica superior', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BS','periodo'=>$per->id]) }}" class="btn btn-cyan" data-toggle="tooltip" data-placement="top" title="Básica superior">
+                                                            <a href="{{ route('cursos',['tipo'=>'BS','periodo'=>$per->id]) }}" class="btn green text-white" data-toggle="tooltip" data-placement="top" title="Básica superior">
                                                                 B.superior
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Bachillerato', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BA','periodo'=>$per->id]) }}" class="btn btn-light-blue" data-toggle="tooltip" data-placement="top" title="Bachillerato">
+                                                            <a href="{{ route('cursos',['tipo'=>'BA','periodo'=>$per->id]) }}" class="btn green lighten-1 text-white" data-toggle="tooltip" data-placement="top" title="Bachillerato">
                                                                 Bachillerato
                                                             </a>    
                                                         @endcan
@@ -123,20 +123,31 @@
                         <div class="form-group">
                             <label for="">Fecha de incio<i class="text-danger">*</i></label>
                             <div class="input-group date" id="fecha_inicio_date" data-target-input="nearest">
-                                <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control datetimepicker-input" data-target="#fecha_inicio_date" required/>
+                                <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control datetimepicker-input @error('fecha_inicio') is-invalid @enderror" value="{{ old('fecha_inicio') }}" data-target="#fecha_inicio_date" required/>
                                 <div class="input-group-append" data-target="#fecha_inicio_date" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
+                                @error('fecha_inicio')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                          
                         </div>
 
                         <div class="form-group">
                             <label for="">Fecha de finalización<i class="text-danger">*</i></label>
                             <div class="input-group date" id="fecha_final_date" data-target-input="nearest">
-                                <input type="text" name="fecha_final" id="fecha_final" class="form-control datetimepicker-input" data-target="#fecha_final_date" required/>
+                                <input type="text" name="fecha_final" id="fecha_final" value="{{ old('fecha_final') }}" class="form-control datetimepicker-input @error('fecha_final') is-invalid @enderror" data-target="#fecha_final_date" required/>
                                 <div class="input-group-append" data-target="#fecha_final_date" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
+                                @error('fecha_final')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
 

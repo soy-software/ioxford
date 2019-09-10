@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary">{{ __('Reset Password') }}</div>
+                <div class="card-header text-center">
+                    <img src="{{ asset('img/oxford.png') }}" alt="" class="card-img-top">
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

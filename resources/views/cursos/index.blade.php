@@ -10,7 +10,7 @@
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link {{ $errors->any()?'':'active' }}" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                        Listado
+                        Cursos
                     </a>
                 </li>
                 <li class="nav-item">
@@ -38,9 +38,9 @@
                                                 <th><strong>{{ $paralelo->nombre }}</strong></th>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                                        <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn btn-deep-purple">Estudiantes</a>
+                                                        <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn btn-light-blue">Estudiantes</a>
                                                         @can('actualizar', $periodo)
-                                                        <button type="button" class="btn btn-danger" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);">
+                                                        <button type="button" class="btn btn-secondary" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);">
                                                                 <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                         @endcan
@@ -86,7 +86,7 @@
                               <option value="D">D</option>
                             </select>
                         </div>
-                        <button class="btn btn-deep-purple">Guardar</button>
+                        <button class="btn btn-primary">Guardar</button>
                     </form>
                     @else
                     <div class="alert alert-primary" role="alert">
@@ -119,11 +119,19 @@
                 closeIcon: true,
                 closeIconClass: 'fas fa-times',
                 buttons: {
-                    confirmar: function () {
-                        window.location.replace($(arg).data('url'));
+                    confirmar: {
+                        text: 'Confirmar', // text for button
+                        btnClass: 'btn-primary', // class for the button
+                        action: function(heyThereButton){
+                            window.location.replace($(arg).data('url'));
+                        }
                     },
-                    cancelar: function () {
-                        
+                    
+                    cancelar: {
+                        text: 'Cancelar', // text for button
+                        btnClass: 'btn-secondary', // class for the button
+                        action: function(heyThereButton){
+                        }
                     }
                 }
             });

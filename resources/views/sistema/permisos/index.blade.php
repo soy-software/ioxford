@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="card-footer text-muted">
-            <button class="btn btn-deep-purple">Actualizar roles</button>
+            <button class="btn btn-primary">Actualizar permisos</button>
         </div>
     </div>
 </form>

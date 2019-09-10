@@ -23,7 +23,7 @@
   <script type="text/javascript" src="{{ asset('admin/MDB-Free_4.8.8/js/popper.min.js') }}"></script>
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="{{ asset('admin/MDB-Free_4.8.8/js/bootstrap.min.js') }}"></script>
-  
+  <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
   {{--  extras  --}}
   <script src="{{ asset('js/notify.min.js') }}"></script>
   @stack('scriptsHeader')
@@ -35,6 +35,12 @@
             }
         });
     </script>
+    <style>
+        .logo{
+            font-family: 'Prata', serif;
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,9 +48,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm blue darken-3">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                    <a class="navbar-brand logo" href="{{ url('/') }}">
+                        OXFORD
+                    </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -90,11 +96,11 @@
                             <li class="nav-item">
                                 <a class="nav-link border border-light rounded waves-effect waves-light" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            {{--  @if (Route::has('register'))
                                 <li class="nav-item ml-2">
                                     <a class="nav-link border border-light rounded waves-effect waves-light" href="{{ route('register') }}"><i class="fas fa-user-edit"></i> {{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif  --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

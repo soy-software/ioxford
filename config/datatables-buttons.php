@@ -57,7 +57,7 @@ return [
      * Default html builder parameters.
      */
     'parameters' => [
-        'dom'     => 'Blfrtip',
+        'dom'     => 'lfrtip',
         'order'   => [[0, 'desc']],
         'sPaginationType'=> 'full_numbers',
         'autoWidth' => false,

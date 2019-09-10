@@ -75,8 +75,8 @@
                         </table>
                     </div>
 
-                    <button type="submit" class="btn btn-deep-purple">
-                        {{ __('Register') }}
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Actualizar') }}
                     </button>
                         
                 </form>

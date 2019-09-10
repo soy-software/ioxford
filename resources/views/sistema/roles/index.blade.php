@@ -21,7 +21,7 @@
                     </span>
                 @enderror
                 <div class="input-group-append">
-                    <button class="btn btn-md btn-deep-purple m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">Guardar</button>
+                    <button class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0" type="submit" id="button-addon2">Guardar</button>
                 </div>
             </div>
         </form>
@@ -63,25 +63,33 @@
                 closeIcon: true,
                 closeIconClass: 'fas fa-times',
                 buttons: {
-                    confirmar: function () {
-                        $.blockUI({message:'<h1>Espere por favor.!</h1>'});
-                        $.post( $(arg).data('url'), { id: $(arg).data('id') })
-                        .done(function( data ) {
-                            if(data.success){
-                                $('#dataTableBuilder').DataTable().draw(false);
-                                $.notify(""+data.success, "success");
-                            }
-                            if(data.default){
-                                $.notify(""+data.default, "info");
-                            }
-                        }).always(function(){
-                            $.unblockUI();
-                        }).fail(function(){
-                            $.notify("Ocurrio un error", "danger");
-                        });
+                    confirmar: {
+                        text: 'Confirmar', // text for button
+                        btnClass: 'btn-primary', // class for the button
+                        action: function(heyThereButton){
+                            $.blockUI({message:'<h1>Espere por favor.!</h1>'});
+                            $.post( $(arg).data('url'), { id: $(arg).data('id') })
+                            .done(function( data ) {
+                                if(data.success){
+                                    $('#dataTableBuilder').DataTable().draw(false);
+                                    $.notify(""+data.success, "success");
+                                }
+                                if(data.default){
+                                    $.notify(""+data.default, "info");
+                                }
+                            }).always(function(){
+                                $.unblockUI();
+                            }).fail(function(){
+                                $.notify("Ocurrio un error", "danger");
+                            });
+                        }
                     },
-                    cancelar: function () {
-                        
+                    
+                    cancelar: {
+                        text: 'Cancelar', // text for button
+                        btnClass: 'btn-secondary', // class for the button
+                        action: function(heyThereButton){
+                        }
                     }
                 }
             });

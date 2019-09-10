@@ -25,9 +25,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// periodos
 Route::get('/periodos', 'PeriodoController@index')->name('periodos');
 Route::post('/periodo-estado', 'PeriodoController@estado')->name('estadoPeriodo');
 Route::post('/periodo-guardar', 'PeriodoController@guardar')->name('periodosGuardar');
+Route::get('/periodo-editar/{id}', 'PeriodoController@editar')->name('editarPeriodo');
+Route::post('/periodo-actualizar', 'PeriodoController@actualizar')->name('periodosActualizar');
 // cursos
 Route::get('/cursos/{tipo}/{periodo}', 'CursoController@index')->name('cursos');
 
