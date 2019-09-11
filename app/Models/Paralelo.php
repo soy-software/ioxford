@@ -14,6 +14,7 @@ class Paralelo extends Model
 
     public function estudiantes()
     {
-        return $this->belongsToMany(User::class, 'estudiantes', 'paralelo_id', 'user_id');
+        return $this->belongsToMany(User::class, 'estudiantes', 'paralelo_id', 'user_id')
+        ->as('estudiante')->withPivot(['id']);
     }
 }

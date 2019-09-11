@@ -25,9 +25,9 @@ class UsuariosController extends Controller
 
     public function guardar(Request $request)
     {
-
+        $letras='/^[\pL\s\-]+$/u';
         $request->validate([
-            'name' => 'required|alpha|max:191',
+            'name' => 'required|max:191|regex:'.$letras,
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:8|confirmed',
             "roles"    => "nullable|array",
@@ -77,9 +77,10 @@ class UsuariosController extends Controller
 
     public function actualizar(Request $request)
     {
+        $letras='/^[\pL\s\-]+$/u';
         $request->validate([
             'usuario'=>'required|exists:users,id',
-            'name' => 'required|alpha|max:255',
+            'name' => 'required|max:255|regex:'.$letras,
             'email' => 'required|string|email|max:255|unique:users,email,'.$request->usuario,
             'password' => 'nullable|string|min:8|confirmed',
             "roles"    => "nullable|array",

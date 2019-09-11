@@ -7,6 +7,10 @@ use ioxford\Models\Estudiante;
 use ioxford\Models\Paralelo;
 use ioxford\User;
 use Illuminate\Support\Facades\DB;
+use ioxford\Http\Requests\Estudiante\RqActualizar;
+use ioxford\Http\Requests\Estudiante\RqGuardar;
+use ioxford\Imports\EstudianteImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EstudianteController extends Controller
 {
@@ -18,10 +22,11 @@ class EstudianteController extends Controller
         return view('estudiantes.index',$data);
     }
 
-    public function guardar(Request $request)
+    public function guardar(RqGuardar $request)
     {
         $paralelo=Paralelo::findOrFail($request->paralelo);
         $periodo=$paralelo->cursoPeriodo->periodo;
+        $this->authorize('actualizar', $periodo);
 
        try {
             DB::beginTransaction();
@@ -56,8 +61,43 @@ class EstudianteController extends Controller
         
     }
 
+    public function importarEstudiante(Request $request)
+    {
+        Excel::import(new EstudianteImport,$request->archivo);
+        $request->session()->flash('success','Estudiante importados exitosamente');
+        return redirect()->route('estudiantes',$request->paralelo);
+    }
+
+    public function actualizar(RqActualizar $request)
+    {
+        $estudiante=Estudiante::findOrFail($request->estudiante);
+        $user=$estudiante->user;
+        $user->name=$request->nombresApellidos;
+        $user->identificacion=$request->identificacionEstudiante;
+        $user->nombres_representante=$request->nombresApellidosRepresentante;
+        $user->identificacion_representante=$request->identificacionRepresentante;
+        $user->celular_representante=$request->celularRepresentante;
+        $user->email_representante=$request->emailRepresentante;
+        $user->save();
+        $request->session()->flash('success','Estudiante actualizado exitosamente');
+        return redirect()->route('estudiantes',$estudiante->paralelo->id);
+    }
+
+    public function retirar(Request $request, $idEst)
+    {
+        
+        $estudiante=Estudiante::findOrFail($idEst);
+        try {
+            $estudiante->delete();
+            $request->session()->flash('success','Estudiante retirado');    
+        } catch (\Exception $th) {
+            $request->session()->flash('default','Estudiante no retirado');    
+        }
+        return redirect()->route('estudiantes',$estudiante->paralelo->id);
+    }
+    
     public function enviarMensaje(Request $request)
     {
-        return $request;
+       
     }
 }

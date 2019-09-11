@@ -40,8 +40,12 @@ Route::get('/paralelos-eliminar/{id}', 'ParaleloController@eliminar')->name('eli
 // estudiantes
 Route::get('/estudiantes/{paralelo}', 'EstudianteController@index')->name('estudiantes');
 Route::post('/estudiantes-guardar', 'EstudianteController@guardar')->name('guardarEstudiante');
+Route::post('/estudiantes-importar', 'EstudianteController@importarEstudiante')->name('importarEstudiante');
+Route::post('/estudiantes-actualizar', 'EstudianteController@actualizar')->name('actualizarEstudiante');
+Route::get('/estudiantes-retirar/{id}', 'EstudianteController@retirar')->name('retirarEstudiante');
 // mensajes
 Route::post('/estudiantes-enviar-mensajes', 'EstudianteController@enviarMensaje')->name('enviarMensaje');
+
 
 
 // routusuarios

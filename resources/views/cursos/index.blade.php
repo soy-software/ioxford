@@ -38,10 +38,10 @@
                                                 <th><strong>{{ $paralelo->nombre }}</strong></th>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                                        <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn btn-light-blue">Estudiantes</a>
+                                                        <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn green darken-2 text-white">Estudiantes</a>
                                                         @can('actualizar', $periodo)
-                                                        <button type="button" class="btn btn-secondary" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);">
-                                                                <i class="fas fa-trash-alt"></i>
+                                                        <button type="button" class="btn  blue lighten-1 text-white" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);">
+                                                            Eliminar
                                                         </button>
                                                         @endcan
                                                     </div>

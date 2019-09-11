@@ -7,7 +7,7 @@
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link {{ $errors->any()?'':'active' }}" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                        Listado
+                        Períodos
                     </a>
                 </li>
                 <li class="nav-item">
@@ -28,7 +28,10 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Fecha de inicio</th>
                                         <th scope="col">Fecha de final</th>
+                                        
+                                        @can('Períodos', ioxford\Models\Periodo::class)
                                         <th scope="col">Estado</th>
+                                        @endcan
                                         <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
@@ -44,12 +47,11 @@
                                                 <td>
                                                     {{ $per->fecha_final }}
                                                 </td>
+                                                @can('Períodos', ioxford\Models\Periodo::class)
                                                 <td>
-                                                    @can('Períodos', ioxford\Models\Periodo::class)
-                                                        <input type="checkbox" value="{{ $per->id }}" class="toggle-estado" {{ $per->estado=='Proceso'?'checked':'' }} data-toggle="toggle" data-on="Proceso" data-off="Finalizado" data-onstyle="success" data-offstyle="danger" data-size="sm">    
-                                                    @endcan
-                                                    
+                                                    <input type="checkbox" value="{{ $per->id }}" class="toggle-estado" {{ $per->estado=='Proceso'?'checked':'' }} data-toggle="toggle" data-on="Proceso" data-off="Finalizado" data-onstyle="success" data-offstyle="danger" data-size="sm">    
                                                 </td>
+                                                @endcan
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                         @can('actualizar', $per)
@@ -166,7 +168,7 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button>
-                        <strong>No puede crear un nuevo período</strong>
+                        <strong>Sin acceso</strong>
                     </div>
                     @endif
 

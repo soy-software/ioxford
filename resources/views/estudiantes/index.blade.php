@@ -18,6 +18,11 @@
                         Ingresar nuevo estudiante
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="importar-tab" data-toggle="tab" href="#importar" role="tab" aria-controls="importar" aria-selected="false">
+                        Importar estudiantes desde excel
+                    </a>
+                </li>
             </ul>
       </div>
       <div class="card-body">
@@ -38,6 +43,7 @@
                                             <th scope="col">
                                                 Selecionar/Deselecionar
                                             </th>
+                                            <th scope="col">Acciones</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -49,8 +55,17 @@
                                                 <td>{{ $est->name }}</td>
                                                 <td>{{ $est->identificacion }}</td>
                                                 <td>
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                                        @include('estudiantes.editar',['est'=>$est])
+                                                        <button type="button" class="btn btn-unique" data-url="{{ route('retirarEstudiante',$est->estudiante->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Quitar de paralelo">
+                                                            <i class="fas fa-user-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <td>
                                                     <input type="checkbox" name="estudiante[]" value="{{ $est->id }}">
                                                 </td>
+                                                
                                             </tr> 
                                         
                                         @endforeach
@@ -104,84 +119,128 @@
                 <div class="tab-pane fade {{ $errors->any()?'show active':'' }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                    @can('actualizar', $periodo)
 
-                   <form method="POST" action="{{ route('guardarEstudiante') }}">
-                    @csrf
-                    <input type="hidden" name="paralelo" value="{{ $paralelo->id }}">
-                    <div class="md-form md-outline">
-                        <label for="nombresApellidos" class="">Nombres y Apellidos de estudiante<i class="text-danger">*</i></label>
-                        <input id="nombresApellidos" type="text" class="form-control @error('nombresApellidos') is-invalid @enderror" name="nombresApellidos" value="{{ old('nombresApellidos') }}" required autocomplete="nombresApellidos" autofocus>
+                        <form method="POST" action="{{ route('guardarEstudiante') }}">
+                            @csrf
+                            <input type="hidden" name="paralelo" value="{{ $paralelo->id }}">
+                            <div class="md-form md-outline">
+                                <label for="nombresApellidos" class="">Nombres y Apellidos de estudiante<i class="text-danger">*</i></label>
+                                <input id="nombresApellidos" type="text" class="form-control @error('nombresApellidos') is-invalid @enderror" name="nombresApellidos" value="{{ old('nombresApellidos') }}" required autocomplete="nombresApellidos" autofocus>
 
-                        @error('nombresApellidos')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    
-                    <div class="md-form md-outline">
-                        <label for="identificacionEstudiante" class="">Identificación de estudiante<i class="text-danger">*</i></label>
-                        <input id="identificacionEstudiante" type="text" class="form-control @error('identificacionEstudiante') is-invalid @enderror" name="identificacionEstudiante" value="{{ old('identificacionEstudiante') }}" required autocomplete="identificacionEstudiante">
+                                @error('nombresApellidos')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                            <div class="md-form md-outline">
+                                <label for="identificacionEstudiante" class="">Identificación de estudiante<i class="text-danger">*</i></label>
+                                <input id="identificacionEstudiante" type="text" class="form-control @error('identificacionEstudiante') is-invalid @enderror" name="identificacionEstudiante" value="{{ old('identificacionEstudiante') }}" required autocomplete="identificacionEstudiante">
 
-                        @error('identificacionEstudiante')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    
-                    <div class="md-form md-outline">
-                        <label for="nombresApellidosRepresentante" class="">Nombres y Apellidos de representante<i class="text-danger">*</i></label>
-                        <input id="nombresApellidosRepresentante" type="text" class="form-control @error('nombresApellidosRepresentante') is-invalid @enderror" name="nombresApellidosRepresentante" value="{{ old('nombresApellidosRepresentante') }}" required autocomplete="nombresApellidosRepresentante">
+                                @error('identificacionEstudiante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                            <div class="md-form md-outline">
+                                <label for="nombresApellidosRepresentante" class="">Nombres y Apellidos de representante<i class="text-danger">*</i></label>
+                                <input id="nombresApellidosRepresentante" type="text" class="form-control @error('nombresApellidosRepresentante') is-invalid @enderror" name="nombresApellidosRepresentante" value="{{ old('nombresApellidosRepresentante') }}" required autocomplete="nombresApellidosRepresentante">
 
-                        @error('nombresApellidosRepresentante')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                                @error('nombresApellidosRepresentante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                    <div class="md-form md-outline">
-                        <label for="identificacionRepresentante" class="">Identificación de representante <i class="text-danger">*</i></label>
-                        <input id="identificacionRepresentante" type="text" class="form-control @error('identificacionRepresentante') is-invalid @enderror" name="identificacionRepresentante" value="{{ old('identificacionRepresentante') }}" required autocomplete="identificacionRepresentante">
+                            <div class="md-form md-outline">
+                                <label for="identificacionRepresentante" class="">Identificación de representante <i class="text-danger">*</i></label>
+                                <input id="identificacionRepresentante" type="text" class="form-control @error('identificacionRepresentante') is-invalid @enderror" name="identificacionRepresentante" value="{{ old('identificacionRepresentante') }}" required autocomplete="identificacionRepresentante">
 
-                        @error('identificacionRepresentante')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                                @error('identificacionRepresentante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                    <div class="md-form md-outline">
-                        <label for="celularRepresentante" class="">Número de celular de representante<i class="text-danger">*</i></label>
-                        <input id="celularRepresentante" type="number" class="form-control @error('celularRepresentante') is-invalid @enderror" name="celularRepresentante" value="{{ old('celularRepresentante') }}" required autocomplete="celularRepresentante">
+                            <div class="md-form md-outline">
+                                <label for="celularRepresentante" class="">Número de celular de representante(+593 ecuador)<i class="text-danger">*</i></label>
+                                <input id="celularRepresentante" type="number" class="form-control @error('celularRepresentante') is-invalid @enderror" name="celularRepresentante" value="{{ old('celularRepresentante','593') }}" required autocomplete="celularRepresentante">
+                                <small id="emailHelp" class="form-text text-muted">Debe especificar el código de país. Formato: (593)998808775, no añada el cero(0) en el número. Ejemplo: 593998808775</small>
+                                @error('celularRepresentante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="md-form md-outline">
+                                <label for="emailRepresentante" class="">Email de representante</label>
+                                <input id="emailRepresentante" type="email" class="form-control @error('emailRepresentante') is-invalid @enderror" name="emailRepresentante" value="{{ old('emailRepresentante') }}" autocomplete="emailRepresentante">
 
-                        @error('celularRepresentante')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="md-form md-outline">
-                        <label for="emailRepresentante" class="">Email de representante</label>
-                        <input id="emailRepresentante" type="email" class="form-control @error('emailRepresentante') is-invalid @enderror" name="emailRepresentante" value="{{ old('emailRepresentante') }}" autocomplete="emailRepresentante">
+                                @error('emailRepresentante')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        @error('emailRepresentante')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Register') }}
-                    </button>
-                        
-                </form>
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Register') }}
+                            </button>
+                                
+                        </form>
                     @else
                     <div class="alert alert-primary" role="alert">
-                        <strong>No puede crear estudinates en este período</strong>
+                        <strong>No puede crear estudiantes en este período</strong>
                     </div>
                     @endcan
+
+                </div>
+                <div class="tab-pane fade" id="importar" role="tabpanel" aria-labelledby="importar-tab">
+                    <div class="table-responsive">
+                            <h1 class="float-right">CÓDIGO DE PARALELO: <strong>{{ $paralelo->id }}</strong></h1>
+                        <p><strong class="text-danger">Importante:</strong> El archivo .excel debe cumplir con el formato establecido a continuación.</p>
+                        
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código de paralelo<i class="text-danger">*</i></th>
+                                        <th scope="col">Nombres y Apellidos de estudiante<i class="text-danger">*</i></th>
+                                        <th scope="col">Identificación de estudiante<i class="text-danger">*</i></th>
+                                        <th scope="col">Nombres y Apellidos de representante<i class="text-danger">*</i></th>
+                                        <th scope="col">Identificación de representante<i class="text-danger">*</i></th>
+                                        <th scope="col">Número de celular de representante(+593 ecuador)<i class="text-danger">*</i></th>
+                                        <th scope="col">Email de representante</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>{{ $paralelo->id }}</th>
+                                        <th scope="row">JENNY SORAYA DÍAZ ANTE</th>
+                                        <td>0503870735</td>
+                                        <td>JULIO DÍAZ</td>
+                                        <td>0503652349</td>
+                                        <td>593995446543</td>
+                                        <td>julio_diaz@gmail.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+
+                    <div class="card car-body">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('importarEstudiante') }}">
+                            @csrf
+                            <input type="hidden" name="paralelo" value="{{ $paralelo->id }}" required>
+                            <div class="form-group my-1 ml-1">
+                                <label for="exampleFormControlFile1">Selecione archivo .excel</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="archivo" required>
+                            </div>
+                            <button class="btn btn-primary">Importar estudiantes</button>
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -198,10 +257,17 @@
 
 @push('scriptsFooter')
    <script>
+       
+        $('#menuPeriodo').addClass('active');
+        function editar(arg){
+            var id=$(arg).data('id');
+            $('#estudiante_'+id).modal('show');
+        }
+
         function eliminar(arg){
             $.confirm({
                 title: 'Confirme!',
-                content: 'Está seguro de eliminar paralelo!',
+                content: 'Está seguro de quitar estudiante!',
                 type: 'blue',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',
@@ -225,7 +291,7 @@
                 }
             });
         }
-        $('#menuPeriodo').addClass('active');
+
    </script>
 @endpush
 
