@@ -23,43 +23,54 @@
       <div class="card-body">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade {{ $errors->any()?'':'show active' }}" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        
+                    
                     <div class="row">
                     @foreach ($cursos as $cur)
-                        <div class="col-md-4">
-                            <div class="list-group">
-                                <li class="list-group-item active">{{ $cur->nombre }}</li>
-                                @if(count($cur->paralelos($cur->curso_periodos->id)->paralelos)>0)
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-sm text-center">
-                                        @foreach ($cur->paralelos($cur->curso_periodos->id)->paralelos as $paralelo)
-                                        
+                    <div class="col-md-4">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th scope="col" colspan="3">
+                                                <strong class="text-white">{{ $cur->nombre }}</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(count($cur->paralelos($cur->curso_periodos->id)->paralelos)>0)
+                                            @foreach ($cur->paralelos($cur->curso_periodos->id)->paralelos as $paralelo)
                                             <tr>
-                                                <th><strong>{{ $paralelo->nombre }}</strong></th>
-                                                <td class="text-right">
-                                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                                        <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn green darken-2 text-white">Estudiantes</a>
-                                                        @can('actualizar', $periodo)
-                                                        <button type="button" class="btn  blue lighten-1 text-white" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);">
-                                                            Eliminar
+                                                <th scope="row">{{ $paralelo->nombre }}</th>
+                                                
+                                                <td>
+                                                    <div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
+                                                    <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Listado de estudiantes">Estudiantes</a>
+                                                    @can('actualizar', $periodo)
+                                                        <button type="button" class="btn btn-unique" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="fas fa-trash-alt"></i>
                                                         </button>
-                                                        @endcan
-                                                    </div>
-                                                </td>
+                                                    @endcan
+                                                </div>
+                                                </td>    
                                             </tr>
+                                            @endforeach  
+                                        @else
+                                        <tr class="bg orange lighten-4">
+                                            <td>
+                                                <strong>Sin paralelos</strong>
+                                            </td>
+                                        </tr>
+                                        @endif
                                         
-                                        @endforeach
-                                    </table>
-                                </div>
-                                @else
-                                <div class="alert alert-warning" role="alert">
-                                    <strong>Sin paralelos</strong>
-                                </div>
-                                @endif
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>    
-                    @endforeach   
                     </div>
+                        
+                        
+                    @endforeach    
+                    </div>
+
                 </div>
                 <div class="tab-pane fade {{ $errors->any()?'show active':'' }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                    @can('actualizar', $periodo)

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('estudiantes',$paralelo))
 
 @section('content')
 <div class="container-fluid">
@@ -34,7 +34,7 @@
                             <div class="col-md-8">
                                 <div class="table-responsive">
                                     @if(count($paralelo->estudiantes)>0)
-                                    <table class="table table-bordered table-sm">
+                                    <table class="table table-bordered table-sm" id="estudiante">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -56,7 +56,9 @@
                                                 <td>{{ $est->identificacion }}</td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                                        @include('estudiantes.editar',['est'=>$est])
+                                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar" data-id="{{ $est->id }}" onclick="editar(this);">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
                                                         <button type="button" class="btn btn-unique" data-url="{{ route('retirarEstudiante',$est->estudiante->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Quitar de paralelo">
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
@@ -115,7 +117,23 @@
                             </div>
                         </div>
                     </form>
+
+                    @if(count($paralelo->estudiantes)>0)
+                    @foreach ($paralelo->estudiantes as $est)
+                    @include('estudiantes.editar',['est'=>$est])
+                    @endforeach
+                    @endif
+
+                    
+                    @if (session('abrirModal'))
+                        <script>
+                            $('#estudiante')
+                        </script>
+                    @endif
+                    
+
                 </div>
+
                 <div class="tab-pane fade {{ $errors->any()?'show active':'' }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                    @can('actualizar', $periodo)
 
@@ -201,13 +219,13 @@
                 </div>
                 <div class="tab-pane fade" id="importar" role="tabpanel" aria-labelledby="importar-tab">
                     <div class="table-responsive">
-                            <h1 class="float-right">CÓDIGO DE PARALELO: <strong>{{ $paralelo->id }}</strong></h1>
+                            
                         <p><strong class="text-danger">Importante:</strong> El archivo .excel debe cumplir con el formato establecido a continuación.</p>
                         
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Código de paralelo<i class="text-danger">*</i></th>
+                                        
                                         <th scope="col">Nombres y Apellidos de estudiante<i class="text-danger">*</i></th>
                                         <th scope="col">Identificación de estudiante<i class="text-danger">*</i></th>
                                         <th scope="col">Nombres y Apellidos de representante<i class="text-danger">*</i></th>
@@ -218,7 +236,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>{{ $paralelo->id }}</th>
+                                        
                                         <th scope="row">JENNY SORAYA DÍAZ ANTE</th>
                                         <td>0503870735</td>
                                         <td>JULIO DÍAZ</td>
@@ -250,6 +268,9 @@
 </div>
 
 @prepend('scriptsHeader')
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
+<script type="text/javascript" src="{{ asset('admin/DataTables/datatables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {{--  confirm  --}}
     <link rel="stylesheet" href="{{ asset('admin/jquery-confirm-v3.3.4/jquery-confirm.min.css') }}">
     <script src="{{ asset('admin/jquery-confirm-v3.3.4/jquery-confirm.min.js') }}"></script>
@@ -263,6 +284,35 @@
             var id=$(arg).data('id');
             $('#estudiante_'+id).modal('show');
         }
+
+        $('#estudiante').DataTable({
+            "lengthChange": false,
+            "paging": false,
+            "language": {
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
 
         function eliminar(arg){
             $.confirm({

@@ -63,7 +63,8 @@ class EstudianteController extends Controller
 
     public function importarEstudiante(Request $request)
     {
-        Excel::import(new EstudianteImport,$request->archivo);
+        $paralelo=Paralelo::findOrFail($request->paralelo);
+        Excel::import(new EstudianteImport($paralelo->id),$request->archivo);
         $request->session()->flash('success','Estudiante importados exitosamente');
         return redirect()->route('estudiantes',$request->paralelo);
     }
@@ -79,6 +80,8 @@ class EstudianteController extends Controller
         $user->celular_representante=$request->celularRepresentante;
         $user->email_representante=$request->emailRepresentante;
         $user->save();
+        
+        
         $request->session()->flash('success','Estudiante actualizado exitosamente');
         return redirect()->route('estudiantes',$estudiante->paralelo->id);
     }

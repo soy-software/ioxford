@@ -4,7 +4,7 @@
         <i class="fas fa-key"></i>
     </a>
     @if($rol->name!='Administrador' && $rol->name!='Coordinador' && $rol->name!='Gestor')
-    <button onclick="eliminar(this);" data-url="{{ route('eliminarRol') }}" data-id="{{ $rol->id }}" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar {{ $rol->name }}">
+    <button onclick="eliminar(this);" data-url="{{ route('eliminarRol') }}" data-id="{{ $rol->id }}" type="button" class="btn btn-unique" data-toggle="tooltip" data-placement="top" title="Eliminar {{ $rol->name }}">
         <i class="fas fa-trash-alt"></i>
     </button>
     @endif

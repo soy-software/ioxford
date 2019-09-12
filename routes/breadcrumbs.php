@@ -35,6 +35,14 @@ Breadcrumbs::for('cursos', function ($trail,$tipo,$periodo) {
     $trail->parent('periodos');
     $trail->push('Cursos de '.$tipo, route('cursos',['tipo'=>$tipo,'periodo'=>$periodo->id]));
 });
+
+// estudiantes
+
+Breadcrumbs::for('estudiantes', function ($trail,$paralelo) {
+    $trail->parent('cursos',$paralelo->cursoPeriodo->curso->tipo,$paralelo->cursoPeriodo->periodo);
+    $trail->push('Estudiantes de '.$paralelo->nombre, route('estudiantes',$paralelo->id));
+});
+
 //D:Breadcrums de roles y permisos
 Breadcrumbs::for('roles', function ($trail) {
     $trail->parent('home');

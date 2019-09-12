@@ -1,6 +1,4 @@
-<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar" data-id="{{ $est->id }}" onclick="editar(this);">
-    <i class="fas fa-edit"></i>
-</button>
+
 
 
 <div class="modal fade" id="estudiante_{{ $est->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
