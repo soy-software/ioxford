@@ -42,6 +42,20 @@ Breadcrumbs::for('estudiantes', function ($trail,$paralelo) {
     $trail->parent('cursos',$paralelo->cursoPeriodo->curso->tipo,$paralelo->cursoPeriodo->periodo);
     $trail->push('Estudiantes de '.$paralelo->nombre, route('estudiantes',$paralelo->id));
 });
+Breadcrumbs::for('nuevoEstudiante', function ($trail,$paralelo) {
+    $trail->parent('estudiantes',$paralelo);
+    $trail->push('Nuevo estudiante en '.$paralelo->nombre, route('nuevoEstudiante',$paralelo->id));
+});
+Breadcrumbs::for('importarEstudianteExcel', function ($trail,$paralelo) {
+    $trail->parent('estudiantes',$paralelo);
+    $trail->push('Importar estudiante en '.$paralelo->nombre, route('importarEstudianteExcel',$paralelo->id));
+});
+
+Breadcrumbs::for('editarEstudiante', function ($trail,$estudiante) {
+    $trail->parent('estudiantes',$estudiante->paralelo);
+    $trail->push('Actualizar de '.$estudiante->user->name, route('estudiantes',$estudiante->id));
+});
+
 
 //D:Breadcrums de roles y permisos
 Breadcrumbs::for('roles', function ($trail) {

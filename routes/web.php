@@ -39,12 +39,16 @@ Route::post('/paralelos-guardar', 'ParaleloController@guardar')->name('paralelos
 Route::get('/paralelos-eliminar/{id}', 'ParaleloController@eliminar')->name('eliminarParalelo');
 // estudiantes
 Route::get('/estudiantes/{paralelo}', 'EstudianteController@index')->name('estudiantes');
+Route::get('/estudiantes-nuevo/{paralelo}', 'EstudianteController@nuevo')->name('nuevoEstudiante');
 Route::post('/estudiantes-guardar', 'EstudianteController@guardar')->name('guardarEstudiante');
-Route::post('/estudiantes-importar', 'EstudianteController@importarEstudiante')->name('importarEstudiante');
+Route::get('/estudiantes-importar-excel/{paralelo}', 'EstudianteController@importar')->name('importarEstudianteExcel');
+Route::post('/estudiantes-importar-procesar', 'EstudianteController@importarEstudiante')->name('importarEstudiante');
 Route::post('/estudiantes-actualizar', 'EstudianteController@actualizar')->name('actualizarEstudiante');
 Route::get('/estudiantes-retirar/{id}', 'EstudianteController@retirar')->name('retirarEstudiante');
+Route::get('/estudiantes-editar/{id}', 'EstudianteController@editar')->name('editarEstudiante');
+
 // mensajes
-Route::post('/estudiantes-enviar-mensajes', 'EstudianteController@enviarMensaje')->name('enviarMensaje');
+Route::post('/enviar-mensajes', 'Mensajes@enviar')->name('enviarMensaje');
 
 
 

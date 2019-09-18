@@ -22,6 +22,12 @@ class EstudianteController extends Controller
         return view('estudiantes.index',$data);
     }
 
+    public function nuevo($idParalelo)
+    {
+        $paralelo=Paralelo::findOrFail($idParalelo);
+        $periodo=$paralelo->cursoPeriodo->periodo;
+        return view('estudiantes.nuevo',['paralelo'=>$paralelo,'periodo'=>$periodo]);
+    }
     public function guardar(RqGuardar $request)
     {
         $paralelo=Paralelo::findOrFail($request->paralelo);
@@ -61,6 +67,12 @@ class EstudianteController extends Controller
         
     }
 
+    public function importar($idParalelo)
+    {
+        $paralelo=Paralelo::findOrFail($idParalelo);
+        $periodo=$paralelo->cursoPeriodo->periodo;
+        return view('estudiantes.importar',['paralelo'=>$paralelo,'periodo'=>$periodo]);
+    }
     public function importarEstudiante(Request $request)
     {
         $paralelo=Paralelo::findOrFail($request->paralelo);
@@ -69,6 +81,12 @@ class EstudianteController extends Controller
         return redirect()->route('estudiantes',$request->paralelo);
     }
 
+    public function editar($idEst)
+    {
+        $estudiante=Estudiante::findOrFail($idEst);
+        return view('estudiantes.editar',['est'=>$estudiante]);
+    }
+    
     public function actualizar(RqActualizar $request)
     {
         $estudiante=Estudiante::findOrFail($request->estudiante);
@@ -99,8 +117,10 @@ class EstudianteController extends Controller
         return redirect()->route('estudiantes',$estudiante->paralelo->id);
     }
     
+    
+
     public function enviarMensaje(Request $request)
     {
-       
+       return 'ok';
     }
 }
