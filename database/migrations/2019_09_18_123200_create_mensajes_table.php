@@ -22,8 +22,9 @@ class CreateMensajesTable extends Migration
 
             $table->unsignedBigInteger('fecha_id');
             $table->foreign('fecha_id')->references('id')->on('fechas');
-
-            $table->enum('tipo',['BAJO RENDIMIENTO','COMPORTAMIENTO','ASISTENCIA']);
+            
+            $table->enum('tipo',['Bajo rendimiento','Comportamiento','Asistencia']);
+            $table->boolean('estado')->nullable();
             
         
         });

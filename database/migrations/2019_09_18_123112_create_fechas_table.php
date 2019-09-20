@@ -16,7 +16,9 @@ class CreateFechasTable extends Migration
         Schema::create('fechas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->dateTime('fecha');
+            $table->date('fecha');
+            $table->unsignedBigInteger('paralelo_id');
+            $table->foreign('paralelo_id')->references('id')->on('paralelos');
         });
     }
 

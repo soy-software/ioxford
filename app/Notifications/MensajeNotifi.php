@@ -5,14 +5,14 @@ namespace ioxford\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Mailable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
 
-class Mensaje extends Notification
+class MensajeNotifi extends Notification
 {
     use Queueable;
     protected $data;
+
     /**
      * Create a new notification instance.
      *
@@ -31,7 +31,6 @@ class Mensaje extends Notification
      */
     public function via($notifiable)
     {
-        // return ['mail'];
         return ['nexmo','mail'];
     }
 
@@ -48,8 +47,9 @@ class Mensaje extends Notification
                 ->greeting('Hola!')
                 ->line($this->data['texto'])
                 ->line('Gracias por su atención!');
-
     }
+
+   
 
     /**
      * Get the array representation of the notification.

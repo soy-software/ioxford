@@ -4,6 +4,13 @@
 
 @section('content')
 <div class="container-fluid">
+    <div class="alert alert-primary alert-dismissible" style="display: none;" role="alert">
+       <div class="listError"></div>
+        <button type="button" class="close" onclick="quitarAlert(this);">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
   <div class="card">
       <div class="card-header">
             <a class="float-right" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
@@ -17,8 +24,9 @@
       <div class="card-body">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="{{ route('enviarMensaje') }}" method="POST">
+                    <form action="{{ route('enviarMensaje') }}" method="POST" id="enviarMensajeForm">
                         @csrf
+                        <input type="hidden" name="paralelo" value="{{ $paralelo->id }}" required>
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="table-responsive">
@@ -80,38 +88,38 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                    
-                                <div class="card card-body mb-2">
-                                    <p class="mb-1"><strong>Detalle de mensaje</strong></p>
-                                    <textarea disabled name="texto" rows="3" class="form-control" maxlength="140">Sr, Representante el estudiante VILMER DAVID CRIOLLO CHAN. Ha incurrido una falta en: Bajo rendimiento, por favor acercarse al DECE-OXFORD</textarea>
-                                </div>
+
                                 <div class="card card-body mb-2">
                                     <p class="mb-1"><strong>Seleccione plataforma</strong></p>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="PLATAFORMA1" checked disabled >
                                         <label class="form-check-label" for="PLATAFORMA1">
-                                            Mensaje de texto
+                                            Mensaje de texto <i class="fas fa-sms"></i>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"  id="PLATAFORMA2" checked disabled>
                                         <label class="form-check-label" for="PLATAFORMA2">
-                                            Correo eléctronico
+                                            Correo eléctronico <i class="fas fa-envelope-open-text"></i>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="PLATAFORMA3" disabled>
                                         <label class="form-check-label" for="PLATAFORMA3">
-                                            Whatsapp
+                                            Whatsapp <i class="fab fa-whatsapp text-success"></i>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="PLATAFORMA4" disabled>
                                         <label class="form-check-label" for="PLATAFORMA1">
-                                            Messenger
+                                            Messenger <i class="fab fa-facebook-messenger text-primary"></i>
                                         </label>
                                     </div>
                                     
+                                </div>
+                                <div class="card card-body mb-2">
+                                    <p class="mb-1"><strong>Detalle de mensaje</strong></p>
+                                    <textarea disabled name="texto" class="form-control" maxlength="140">Sr, Representante el estudiante (....). Ha incurrido una falta en: (....), por favor acercarse al DECE-OXFORD</textarea>
                                 </div>
                                 <div class="card card-body mb-2">
                                     <p class="mb-1"><strong class="@error('tipoMensaje') text-danger @enderror">Seleccione tipo de comunicado</strong></p>
@@ -150,22 +158,90 @@
 </div>
 
 @prepend('scriptsHeader')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
-<script type="text/javascript" src="{{ asset('admin/DataTables/datatables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
+    <script type="text/javascript" src="{{ asset('admin/DataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {{--  confirm  --}}
     <link rel="stylesheet" href="{{ asset('admin/jquery-confirm-v3.3.4/jquery-confirm.min.css') }}">
     <script src="{{ asset('admin/jquery-confirm-v3.3.4/jquery-confirm.min.js') }}"></script>
+    {{-- block --}}
+    <script src="{{ asset('js/blockui.min.js') }}"></script>
 @endprepend
 
 @push('scriptsFooter')
    <script>
        
         $('#menuPeriodo').addClass('active');
-        function editar(arg){
-            var id=$(arg).data('id');
-            $('#estudiante_'+id).modal('show');
+        
+        function quitarAlert(){
+            $('.alert').hide();
+            $(".listError").html(''); 
         }
+   
+        $("#enviarMensajeForm").submit(function(e) {
+
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr('action');
+            quitarAlert();
+            $.confirm({
+                title: 'Confirme!',
+                content: 'Está seguro de eliminar usuario!',
+                type: 'blue',
+                icon: 'far fa-sad-cry',
+                theme: 'modern',
+                closeIcon: true,
+                closeIconClass: 'fas fa-times',
+                buttons: {
+                    confirmar: {
+                        text: 'Confirmar', // text for button
+                        btnClass: 'btn-primary', // class for the button
+                        action: function(heyThereButton){
+                            $.blockUI({message:'<h1>Espere por favor.!</h1>'});
+                            $.post( url,form.serialize())
+                            .done(function( data ) {
+                                console.log(data)
+                                if(data.success){
+                                    $.notify(""+data.success, "success");
+                                    $("#enviarMensajeForm")[0].reset();
+                                }
+
+                                if(data.info){
+                                    $.notify(""+data.info, "info");
+                                }
+
+                            }).always(function(){
+                                $.unblockUI();
+                            }).fail(function(data,err){
+                                $('.alert').show();
+                                var errores='';
+                                var datAux = data.responseJSON;
+                                $.each(datAux.errors, function() {
+                                    $.each(this, function(k, v) {
+                                        errores+='<li class="font-weight-semibold">' + v + '</li>';
+                                    });
+                                });
+                
+                                if (errores) {
+                                    $(".listError").append(errores);
+                                }else if (err) {
+                                    $(".listError").append('<li class="font-weight-semibold">'+err+'</li>');
+                                }
+                            });
+                        }
+                    },
+                    
+                    cancelar: {
+                        text: 'Cancelar', // text for button
+                        btnClass: 'btn-secondary', // class for the button
+                        action: function(heyThereButton){
+                        }
+                    }
+                }
+            });
+        
+        
+        });
 
         $('#estudiante').DataTable({
             "lengthChange": false,

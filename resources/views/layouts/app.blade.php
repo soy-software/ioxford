@@ -26,6 +26,7 @@
   <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
   {{--  extras  --}}
   <script src="{{ asset('js/notify.min.js') }}"></script>
+  
   @stack('scriptsHeader')
 
   <script>
@@ -39,6 +40,7 @@
         .logo{
             font-family: 'Prata', serif;
             font-style: italic;
+            font-weight: bold;
         }
     </style>
 </head>

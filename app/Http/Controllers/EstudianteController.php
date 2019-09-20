@@ -14,6 +14,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class EstudianteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index($paralelo)
     {
         $paralelo=Paralelo::findOrFail($paralelo);
