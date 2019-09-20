@@ -13,10 +13,14 @@
 
   <div class="card">
       <div class="card-header">
-            <a class="float-right" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
+            
+            <a class="float-right" href="{{ route('reportesMensajes',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
+                <i class="far fa-file-pdf"></i> Reportes
+            </a>
+            <a class="float-right mr-2" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
                 <i class="far fa-file-excel"></i> Importar estudiante
             </a>
-            <a class="float-right mr-3" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
+            <a class="float-right mr-2" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
                 <i class="fas fa-plus"></i> Nuevo estudiante
             </a>
             Listado de estudiantes

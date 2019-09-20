@@ -56,6 +56,12 @@ Breadcrumbs::for('editarEstudiante', function ($trail,$estudiante) {
     $trail->push('Actualizar de '.$estudiante->user->name, route('estudiantes',$estudiante->id));
 });
 
+// mensajes
+
+Breadcrumbs::for('reportesMensajes', function ($trail,$paralelo) {
+    $trail->parent('estudiantes',$paralelo);
+    $trail->push('Reportes de '.$paralelo->nombre, route('reportesMensajes',$paralelo->id));
+});
 
 //D:Breadcrums de roles y permisos
 Breadcrumbs::for('roles', function ($trail) {

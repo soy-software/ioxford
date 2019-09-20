@@ -59,13 +59,21 @@ class Mensajes extends Controller
             DB::rollback();
             return response()->json(['info'=>'Ocurrio un error, vuelva intentar '.$th->getMessage()]);
         }
-        
-        
-        // $emails_representantes=$estudiantes->pluck('user.email_representante');
-        // $celulares_representantes=$estudiantes->pluck('user.celular_representante');
-        
 
-        
+    }
 
+
+    public function reportes($idParalelo)
+    {
+        $paralelo=Paralelo::findOrFail($idParalelo);
+        $data = array('paralelo' => $paralelo);
+        return view('mensajes.reportes',$data);
+    }
+
+    public function lista($idFecha)
+    {
+        $fecha=Fecha::findOrFail($idFecha);
+        $data = array('fecha' => $fecha);
+        return view('mensajes.lista',$data);
     }
 }

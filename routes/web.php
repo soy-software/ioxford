@@ -49,6 +49,10 @@ Route::get('/estudiantes-editar/{id}', 'EstudianteController@editar')->name('edi
 
 // mensajes
 Route::post('/enviar-mensajes', 'Mensajes@enviar')->name('enviarMensaje');
+Route::get('/reportes-mensajes/{paralelo}', 'Mensajes@reportes')->name('reportesMensajes');
+Route::get('/lista-mensajes/{fecha}', 'Mensajes@lista')->name('listaMensajes');
+
+
 
 
 

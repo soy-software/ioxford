@@ -18,4 +18,10 @@ class Paralelo extends Model
         ->as('estudiante')->withPivot(['id'])
         ->orderBy('name');
     }
+
+    public function fechas()
+    {
+        return $this->hasMany(Fecha::class);
+    }
+
 }
