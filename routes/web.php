@@ -18,7 +18,7 @@ Route::get('/', function () {
     // Artisan::call('config:cache');
 	// Artisan::call('storage:link');
 	// Artisan::call('key:generate');
-	// Artisan::call('migrate --seed');
+	// Artisan::call('migrate::fresh --seed');
 });
 
 Auth::routes();
