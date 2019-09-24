@@ -28,6 +28,7 @@ class EstudianteImport implements ToModel
             $user->celular_representante=$row[4];
             $user->email_representante=$row[5];
             $user->save();
+            $user->assignRole('ESTUDIANTE');
         }
 
         $paralelo=Paralelo::findOrFail($this->idParalelo);

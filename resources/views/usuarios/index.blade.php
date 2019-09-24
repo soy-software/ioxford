@@ -30,7 +30,7 @@
         
                                 
                                 <div class="md-form md-outline">
-                                    <label for="name" class="">{{ __('Name') }}</label>
+                                    <label for="name" class="">{{ __('Name') }}<i class="text-danger">*</i></label>
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
     
                                     @error('name')
@@ -41,7 +41,7 @@
                                 </div>
                                 
                                 <div class="md-form md-outline">
-                                    <label for="email" class="">{{ __('E-Mail Address') }}</label>
+                                    <label for="email" class="">{{ __('E-Mail Address') }}<i class="text-danger">*</i></label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
     
                                     @error('email')
@@ -53,7 +53,7 @@
 
         
                                 <div class="md-form md-outline">
-                                    <label for="password" class="">{{ __('Password') }}</label>
+                                    <label for="password" class="">{{ __('Password') }}<i class="text-danger">*</i></label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
     
                                     @error('password')
@@ -64,7 +64,7 @@
                                 </div>
         
                                 <div class="md-form md-outline">
-                                    <label for="password-confirm" class="">{{ __('Confirm Password') }}</label>
+                                    <label for="password-confirm" class="">{{ __('Confirm Password') }}<i class="text-danger">*</i></label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
 

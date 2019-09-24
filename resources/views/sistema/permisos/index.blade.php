@@ -18,7 +18,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Asignado</th>
+                        <th scope="col">Asignar</th>
                     </tr>
                     </thead>
                     <tbody>

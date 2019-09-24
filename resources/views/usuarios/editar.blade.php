@@ -7,12 +7,14 @@
            Complete información
       </div>
       <div class="card-body">
+        @can('actualizar', $user)
+        
             <form method="POST" action="{{ route('actualizarUsuario') }}">
                     @csrf
 
                     <input type="hidden" value="{{ $user->id }}" name="usuario">
                     <div class="md-form md-outline">
-                        <label for="name" class="">{{ __('Name') }}</label>
+                        <label for="name" class="">{{ __('Name') }}<i class="text-danger">*</i></label>
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$user->name) }}" required autocomplete="name" autofocus>
 
                         @error('name')
@@ -23,7 +25,7 @@
                     </div>
                     
                     <div class="md-form md-outline">
-                        <label for="email" class="">{{ __('E-Mail Address') }}</label>
+                        <label for="email" class="">{{ __('E-Mail Address') }}<i class="text-danger">*</i></label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required autocomplete="email">
 
                         @error('email')
@@ -66,7 +68,12 @@
                                     <tr>
                                         <th scope="row">{{ $rol->name }}</th>
                                         <td>
+                                            @if($rol->name=='DECE' && $user->hasRole('DECE'))
+                                                <input class="opcionPermisos" name="roles[{{ $rol->id }}]" {{ $user->hasRole($rol)?'checked':'' }} {{ old('roles.'.$rol->id)==$rol->id ?'checked':'' }} value="{{ $rol->id }}" type="checkbox"   data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger" data-size="xs" disabled>
+                                            @else
                                             <input class="opcionPermisos" name="roles[{{ $rol->id }}]" {{ $user->hasRole($rol)?'checked':'' }} {{ old('roles.'.$rol->id)==$rol->id ?'checked':'' }} value="{{ $rol->id }}" type="checkbox"   data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger" data-size="xs">
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -79,7 +86,12 @@
                         {{ __('Actualizar') }}
                     </button>
                         
-                </form>
+            </form>
+        @else
+        <div class="alert alert-primary" role="alert">
+            <strong>No se puede editar a este usuario</strong>
+        </div>
+        @endcan
       </div>
 
   </div>

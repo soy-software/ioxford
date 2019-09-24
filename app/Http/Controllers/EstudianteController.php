@@ -51,6 +51,7 @@ class EstudianteController extends Controller
                 $user->celular_representante=$request->celularRepresentante;
                 $user->email_representante=$request->emailRepresentante;
                 $user->save();
+                $user->assignRole('ESTUDIANTE');
             }
             
             $estudiante=Estudiante::where(['user_id'=>$user->id,'paralelo_id'=>$paralelo->id])->first();

@@ -61,7 +61,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            
+                        
+                        <li class="nav-item" id="menuInicio">
+                            <a class="nav-link" href="{{ route('home') }}">
+                                Inicio
+                            </a>
+                        </li>
+                        
                         
                         @role('DECE')
 

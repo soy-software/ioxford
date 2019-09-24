@@ -26,7 +26,9 @@
 @endprepend
 
 @push('scriptsFooter')
-    
+    <script>
+        $('#menuInicio').addClass('active');
+    </script>
 @endpush
 
 @endsection
