@@ -1,30 +1,148 @@
 @extends('layouts.app')
-@section('breadcrumbs', Breadcrumbs::render('home'))
+@section('breadcrumbs', Breadcrumbs::render('listaMensajes',$fecha))
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Fechas</div>
+                <div class="card-header">Listado de estudiantes a quienes se ha enviado mensajes</div>
 
                 <div class="card-body">
-                   @foreach ($fecha->mensajes as $msg)
-                       <p>{{ $msg->estudiante->user->name }}</p>
-                       <p>{{ $msg->tipo }}</p>
-                       <p>{{ $msg->created_at }}</p>
-                   @endforeach
+                    @if (count($fecha->mensajes)>0)
+                        
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm" id="tableMensaje">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Estudiante</th>
+                                    <th scope="col">Identificacíon</th>
+                                    <th scope="col">Representante</th>
+                                    <th scope="col">Identificación representante</th>
+                                    <th scope="col">Email representante</th>
+                                    <th scope="col">Celular representante</th>
+                                    <th scope="col">Tipo de comunicado</th>
+                                    <th scope="col">Fecha y hora</th>
+                                    <th scope="col">Carta de compromiso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php($i=0)
+                                @foreach ($fecha->mensajes as $msg)
+                                @php($i++)
+                                <tr>
+                                    <th scope="row">{{ $i }}</th>
+                                    <td>
+                                        {{ $msg->estudiante->user->name }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->estudiante->user->identificacion }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->estudiante->user->nombres_representante }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->estudiante->user->identificacion_representante }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->estudiante->user->email_representante }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->estudiante->user->celular_representante }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->tipo }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->created_at }}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                            <button type="button" onclick="abrirModal(this);" data-url="{{ route('cartaCompromiso',$msg->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Carta de compromiso">
+                                                <i class="fas fa-file-word"></i>
+                                            </button>
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    @else
+                        <div class="alert alert-primary" role="alert">
+                            <strong>No existe mensajes</strong>
+                        </div>
+                    @endif
+
+                   
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade bd-example-modal-lg" id="modalCartaCompromiso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="" id="iframeCartaCompromiso" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
 @prepend('scriptsHeader')
-    
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
+<script type="text/javascript" src="{{ asset('admin/DataTables/datatables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 @endprepend
 
 @push('scriptsFooter')
-    
+    <script>
+        
+        
+        function abrirModal(arg){
+            $('#iframeCartaCompromiso').attr('src',$(arg).data('url'));
+            $('#modalCartaCompromiso').modal('show');
+        }
+
+        
+        $('#tableMensaje').DataTable({
+            "lengthChange": false,
+            "paging": false,
+            "language": {
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+
+
+    </script>
 @endpush
 
 @endsection

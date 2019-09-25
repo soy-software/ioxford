@@ -105,6 +105,10 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         array (
             'ioxford\\' => 8,
         ),
+        'h' => 
+        array (
+            'h4cc\\WKHTMLToPDF\\' => 17,
+        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -190,6 +194,10 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
             'Laraveles\\Spanish\\' => 18,
             'Laravel\\Tinker\\' => 15,
         ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+        ),
         'J' => 
         array (
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
@@ -241,6 +249,7 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         'B' => 
         array (
             'BeyondCode\\DumpServer\\' => 22,
+            'Barryvdh\\Snappy\\' => 16,
         ),
     );
 
@@ -254,6 +263,10 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         'ioxford\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'h4cc\\WKHTMLToPDF\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/h4cc/wkhtmltopdf-amd64',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -456,6 +469,10 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
@@ -556,6 +573,10 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
         ),
+        'Barryvdh\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -580,6 +601,15 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
     );
 
     public static $classMap = array (
+        'Barryvdh\\Snappy\\Facades\\SnappyImage' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/Facades/SnappyImage.php',
+        'Barryvdh\\Snappy\\Facades\\SnappyPdf' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/Facades/SnappyPdf.php',
+        'Barryvdh\\Snappy\\IlluminateSnappyImage' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/IlluminateSnappyImage.php',
+        'Barryvdh\\Snappy\\IlluminateSnappyPdf' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/IlluminateSnappyPdf.php',
+        'Barryvdh\\Snappy\\ImageWrapper' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/ImageWrapper.php',
+        'Barryvdh\\Snappy\\LumenServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/LumenServiceProvider.php',
+        'Barryvdh\\Snappy\\PdfFaker' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfFaker.php',
+        'Barryvdh\\Snappy\\PdfWrapper' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfWrapper.php',
+        'Barryvdh\\Snappy\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/ServiceProvider.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -2200,6 +2230,11 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Knp\\Snappy\\AbstractGenerator' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/AbstractGenerator.php',
+        'Knp\\Snappy\\Exception\\FileAlreadyExistsException' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Exception/FileAlreadyExistsException.php',
+        'Knp\\Snappy\\GeneratorInterface' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/GeneratorInterface.php',
+        'Knp\\Snappy\\Image' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Image.php',
+        'Knp\\Snappy\\Pdf' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Pdf.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -4930,7 +4965,9 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         'Zend\\Diactoros\\UploadedFileFactory' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/UploadedFileFactory.php',
         'Zend\\Diactoros\\Uri' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Uri.php',
         'Zend\\Diactoros\\UriFactory' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/UriFactory.php',
+        'h4cc\\WKHTMLToPDF\\WKHTMLToPDF' => __DIR__ . '/..' . '/h4cc/wkhtmltopdf-amd64/WKHTMLToPDF.php',
         'ioxford\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'ioxford\\DataTables\\MensajesDataTable' => __DIR__ . '/../..' . '/app/DataTables/MensajesDataTable.php',
         'ioxford\\DataTables\\Sistema\\RolesDataTable' => __DIR__ . '/../..' . '/app/DataTables/Sistema/RolesDataTable.php',
         'ioxford\\DataTables\\UsuariosDataTable' => __DIR__ . '/../..' . '/app/DataTables/UsuariosDataTable.php',
         'ioxford\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -4968,7 +5005,9 @@ class ComposerStaticInit422d4cabad42d4f00922f2e610ce5bff
         'ioxford\\Models\\Mensaje' => __DIR__ . '/../..' . '/app/Models/Mensaje.php',
         'ioxford\\Models\\Paralelo' => __DIR__ . '/../..' . '/app/Models/Paralelo.php',
         'ioxford\\Models\\Periodo' => __DIR__ . '/../..' . '/app/Models/Periodo.php',
+        'ioxford\\Notifications\\MensajeNotifi' => __DIR__ . '/../..' . '/app/Notifications/MensajeNotifi.php',
         'ioxford\\Policies\\PeriodoPolicy' => __DIR__ . '/../..' . '/app/Policies/PeriodoPolicy.php',
+        'ioxford\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
         'ioxford\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'ioxford\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'ioxford\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

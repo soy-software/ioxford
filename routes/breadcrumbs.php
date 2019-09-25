@@ -63,6 +63,15 @@ Breadcrumbs::for('reportesMensajes', function ($trail,$paralelo) {
     $trail->push('Reportes de '.$paralelo->nombre, route('reportesMensajes',$paralelo->id));
 });
 
+Breadcrumbs::for('listaMensajes', function ($trail,$fecha) {
+    $trail->parent('reportesMensajes',$fecha->paralelo);
+    $trail->push('Fecha '.$fecha->fecha, route('listaMensajes',$fecha->id));
+});
+
+
+
+
+
 //D:Breadcrums de roles y permisos
 Breadcrumbs::for('roles', function ($trail) {
     $trail->parent('home');
@@ -82,5 +91,6 @@ Breadcrumbs::for('editarUsuario', function ($trail,$user) {
     $trail->parent('usuarios');
     $trail->push('Editar usuario', route('editarUsuario',$user->id));
 });
+
 
 

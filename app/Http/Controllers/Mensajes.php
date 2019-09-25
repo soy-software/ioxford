@@ -12,6 +12,7 @@ use ioxford\Models\Fecha;
 use ioxford\Models\Paralelo;
 use ioxford\Notifications\MensajeNotifi;
 use ioxford\Models\Mensaje;
+use PDF;
 class Mensajes extends Controller
 {
 
@@ -75,5 +76,13 @@ class Mensajes extends Controller
         $fecha=Fecha::findOrFail($idFecha);
         $data = array('fecha' => $fecha);
         return view('mensajes.lista',$data);
+    }
+
+
+    public function cartaCompromiso($idMsg)
+    {
+        $mensaje=Mensaje::findOrFail($idMsg);
+        $pdf = PDF::loadView('mensajes.cartaCompromiso', ['msg'=>$mensaje]);
+        return $pdf->inline('carta_compromiso.pdf');
     }
 }
