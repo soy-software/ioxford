@@ -29,7 +29,7 @@ class ParaleloPolicy
                 break;
             case 'BM':
                 
-                if($user->can('BásBásica media') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
+                if($user->can('Básica media') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
                     return true;
                 }
                 break;

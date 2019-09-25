@@ -60,7 +60,7 @@
                                         {{ $msg->created_at }}
                                     </td>
                                     <td>
-                                        @can('finalizado', $estudiante->paralelo->cursoPeriodo->periodo)
+                                        @can('enviarMensaje', $estudiante->paralelo)
                                         <input type="checkbox" value="{{ $msg->id }}" class="toggle-estado" {{ $msg->estado==true?'checked':'' }} data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger" data-size="sm">
                                         @endcan
                                     </td>

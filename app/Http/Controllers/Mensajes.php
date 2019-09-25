@@ -23,10 +23,8 @@ class Mensajes extends Controller
 
     public function enviar(RqEnviar $request)
     {
-     
-        
         $paralelo=Paralelo::findOrFail($request->paralelo);
-        $this->authorize('actualizar', $paralelo->cursoPeriodo->periodo);
+        $this->authorize('enviarMensaje', $paralelo);
         try {
             DB::beginTransaction();
             $estudiantes=Estudiante::whereIn('id',$request->estudiante)->get();
