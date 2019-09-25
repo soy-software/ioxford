@@ -28,10 +28,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Fecha de inicio</th>
                                         <th scope="col">Fecha de final</th>
-                                        
-                                        @can('Períodos', ioxford\Models\Periodo::class)
                                         <th scope="col">Estado</th>
-                                        @endcan
                                         <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
@@ -47,11 +44,15 @@
                                                 <td>
                                                     {{ $per->fecha_final }}
                                                 </td>
-                                                @can('Períodos', ioxford\Models\Periodo::class)
+                                                
                                                 <td>
-                                                    <input type="checkbox" value="{{ $per->id }}" class="toggle-estado" {{ $per->estado=='Proceso'?'checked':'' }} data-toggle="toggle" data-on="Proceso" data-off="Finalizado" data-onstyle="success" data-offstyle="danger" data-size="sm">    
+                                                    @can('Períodos', ioxford\Models\Periodo::class)
+                                                        <input type="checkbox" value="{{ $per->id }}" class="toggle-estado" {{ $per->estado=='Proceso'?'checked':'' }} data-toggle="toggle" data-on="Proceso" data-off="Finalizado" data-onstyle="success" data-offstyle="danger" data-size="sm">    
+                                                    @else
+                                                    <span class="badge badge-{{ $per->estado=='Proceso'?'success':'danger' }}">{{ $per->estado }}</span>
+                                                    @endcan
                                                 </td>
-                                                @endcan
+                                                
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                         @can('actualizar', $per)
@@ -215,6 +216,7 @@
             .done(function(data) {
                 if(data.ok){
                     $.notify(data.ok,"success");
+                    location.replace("{{ route('periodos') }}");
                 }
                 
             })

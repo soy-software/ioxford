@@ -4,7 +4,9 @@ namespace ioxford\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use ioxford\Models\Paralelo;
 use ioxford\Models\Periodo;
+use ioxford\Policies\ParaleloPolicy;
 use ioxford\Policies\PeriodoPolicy;
 use ioxford\Policies\UserPolicy;
 use ioxford\User;
@@ -18,7 +20,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class=>UserPolicy::class,
-        Periodo::class=>PeriodoPolicy::class
+        Periodo::class=>PeriodoPolicy::class,
+        Paralelo::class=>ParaleloPolicy::class
     ];
 
     /**

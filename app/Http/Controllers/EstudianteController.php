@@ -18,10 +18,35 @@ class EstudianteController extends Controller
     {
         $this->middleware('auth');
     }
-    
+    public function accesso($tipo)
+    {
+        switch ($tipo) {
+            case 'PRE':
+                $this->authorize('Preparatoría', Periodo::class);   
+                break;
+            
+            case 'BE':
+                $this->authorize('Básica elemental', Periodo::class);   
+                break;
+            case 'BM':
+                $this->authorize('Básica media', Periodo::class);   
+                break;
+            case 'BS':
+                $this->authorize('Básica superior', Periodo::class);   
+                break;
+            case 'BA':
+                $this->authorize('Bachillerato', Periodo::class);   
+                break;
+            default :
+            $this->authorize('******', Periodo::class);   
+            break;
+        }
+    }
     public function index($paralelo)
     {
+        
         $paralelo=Paralelo::findOrFail($paralelo);
+        $this->accesso($paralelo->cursoPeriodo->curso->tipo);
         $periodo=$paralelo->cursoPeriodo->periodo;
         $data = array('paralelo' =>$paralelo ,'periodo'=>$periodo );
         return view('estudiantes.index',$data);
@@ -82,6 +107,7 @@ class EstudianteController extends Controller
     public function importarEstudiante(Request $request)
     {
         $paralelo=Paralelo::findOrFail($request->paralelo);
+        $this->authorize('actualizar', $paralelo->cursoPeriodo->periodo);
         Excel::import(new EstudianteImport($paralelo->id),$request->archivo);
         $request->session()->flash('success','Estudiante importados exitosamente');
         return redirect()->route('estudiantes',$request->paralelo);
@@ -96,6 +122,7 @@ class EstudianteController extends Controller
     public function actualizar(RqActualizar $request)
     {
         $estudiante=Estudiante::findOrFail($request->estudiante);
+        $this->authorize('actualizar', $estudiante->paralelo->cursoPeriodo->periodo);
         $user=$estudiante->user;
         $user->name=$request->nombresApellidos;
         $user->identificacion=$request->identificacionEstudiante;
@@ -114,6 +141,7 @@ class EstudianteController extends Controller
     {
         
         $estudiante=Estudiante::findOrFail($idEst);
+        $this->authorize('actualizar', $estudiante->paralelo->cursoPeriodo->periodo);
         try {
             $estudiante->delete();
             $request->session()->flash('success','Estudiante retirado');    
@@ -122,11 +150,5 @@ class EstudianteController extends Controller
         }
         return redirect()->route('estudiantes',$estudiante->paralelo->id);
     }
-    
-    
 
-    public function enviarMensaje(Request $request)
-    {
-       return 'ok';
-    }
 }

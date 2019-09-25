@@ -20,9 +20,28 @@ class PeriodoPolicy
 
     public function actualizar(User $user, Periodo $periodo)
     {
-        if($periodo->estado=='Proceso' && $user->can('Períodos')){
-            return true;
+        if($periodo->estado=='Proceso'){
+            if($user->can('Períodos')){
+                return true;
+            }
         }
     }
 
+    public function enviarMensaje(User $user, Periodo $periodo)
+    {
+
+        $opciones = array(
+            'Preparatoría',
+            'Básica elemental',
+            'Básica media',
+            'Básica superior',
+            'Bachillerato ',
+        );
+
+        foreach ($opciones as $op) {
+            if($user->can($op) && $periodo->estado=='Proceso'){
+                return true;
+            }
+        }
+    }
 }

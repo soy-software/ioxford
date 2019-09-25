@@ -4,6 +4,9 @@
 
 @section('content')
 <div class="container">
+    @can('actualizar', $est->paralelo->cursoPeriodo->periodo)
+        
+    
     <form method="POST" action="{{ route('actualizarEstudiante') }}">
         @csrf
         <div class="card">
@@ -84,6 +87,11 @@
             </div>
         </div>
     </form>
+    @else
+    <div class="alert alert-primary" role="alert">
+        <strong>No puede actualizar estudiante en este período</strong>
+    </div>
+    @endcan
 </div>
 
 @prepend('scriptsHeader')

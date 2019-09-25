@@ -26,6 +26,7 @@ class Mensajes extends Controller
      
         
         $paralelo=Paralelo::findOrFail($request->paralelo);
+        $this->authorize('actualizar', $paralelo->cursoPeriodo->periodo);
         try {
             DB::beginTransaction();
             $estudiantes=Estudiante::whereIn('id',$request->estudiante)->get();
@@ -91,6 +92,9 @@ class Mensajes extends Controller
             'mensaje' => 'required|exists:mensajes,id',
         ]);
         $per=Mensaje::findOrFail($request->mensaje);
+
+        $this->authorize('actualizar', $per->estudiante->paralelo->cursoPeriodo->periodo);
+
         if($per->estado==true){
             $per->estado=false;
         }else{
@@ -107,11 +111,5 @@ class Mensajes extends Controller
         $pdf = PDF::loadView('mensajes.imprimirCartaCompromiso', ['mensajes'=>$mensajes,'estudiante'=>$estudiante]);
         return $pdf->inline('carta_compromiso.pdf');
     }
-    // aun ver
-    public function cartaCompromiso($idMsg)
-    {
-        $mensaje=Mensaje::findOrFail($idMsg);
-        $pdf = PDF::loadView('mensajes.cartaCompromiso', ['msg'=>$mensaje]);
-        return $pdf->inline('carta_compromiso.pdf');
-    }
+ 
 }

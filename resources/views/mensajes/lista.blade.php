@@ -23,7 +23,6 @@
                                     <th scope="col">Celular representante</th>
                                     <th scope="col">Tipo de comunicado</th>
                                     <th scope="col">Fecha y hora</th>
-                                    <th scope="col">Carta de compromiso</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,14 +55,7 @@
                                     <td>
                                         {{ $msg->created_at }}
                                     </td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                            <button type="button" onclick="abrirModal(this);" data-url="{{ route('cartaCompromiso',$msg->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Carta de compromiso">
-                                                <i class="fas fa-file-word"></i>
-                                            </button>
-                                            
-                                        </div>
-                                    </td>
+                                    
                                 </tr>
                                 @endforeach
 
@@ -86,15 +78,7 @@
     </div>
 </div>
 
-<div class="modal fade bd-example-modal-lg" id="modalCartaCompromiso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="" id="iframeCartaCompromiso" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 @prepend('scriptsHeader')
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
@@ -105,12 +89,7 @@
 @push('scriptsFooter')
     <script>
         
-        
-        function abrirModal(arg){
-            $('#iframeCartaCompromiso').attr('src',$(arg).data('url'));
-            $('#modalCartaCompromiso').modal('show');
-        }
-
+  
         
         $('#tableMensaje').DataTable({
             "lengthChange": false,

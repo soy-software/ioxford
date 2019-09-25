@@ -17,12 +17,15 @@
             <a class="float-right" href="{{ route('reportesMensajes',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
                 <i class="far fa-file-pdf"></i> Reportes
             </a>
+            @can('actualizar', $paralelo->cursoPeriodo->periodo)
             <a class="float-right mr-2" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
                 <i class="far fa-file-excel"></i> Importar estudiante
             </a>
+            
             <a class="float-right mr-2" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
                 <i class="fas fa-plus"></i> Nuevo estudiante
             </a>
+            @endcan
             Listado de estudiantes
       </div>
       <div class="card-body">
@@ -63,9 +66,15 @@
                                                     
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                                         
+                                                        
                                                         <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Mensajes">
                                                             <i class="fas fa-sticky-note"></i>
                                                         </a>
+                                                        
+
+
+                                                        @can('actualizar', $paralelo->cursoPeriodo->periodo)
+                                                            
                                                         
                                                         <a href="{{ route('editarEstudiante',$est->estudiante->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
                                                             <i class="fas fa-edit"></i>
@@ -73,11 +82,16 @@
                                                         <button type="button" class="btn btn-unique" data-url="{{ route('retirarEstudiante',$est->estudiante->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Quitar de paralelo">
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
+
+                                                        @endcan
+
+
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    
-                                                    <input type="checkbox" name="estudiante[{{ $est->estudiante->id }}]" value="{{ $est->estudiante->id }}" {{ old('estudiante.'.$est->estudiante->id)==$est->estudiante->id ?'checked':'' }}>
+                                                <td class="text-center">
+                                                    @can('enviarMensaje', $paralelo)
+                                                        <input type="checkbox" name="estudiante[{{ $est->estudiante->id }}]" value="{{ $est->estudiante->id }}" {{ old('estudiante.'.$est->estudiante->id)==$est->estudiante->id ?'checked':'' }}>
+                                                    @endcan
 
                                                 </td>
                                                 
@@ -131,6 +145,8 @@
                                 </div>
                                 <div class="card card-body mb-2">
                                     <p class="mb-1"><strong class="@error('tipoMensaje') text-danger @enderror">Seleccione tipo de comunicado</strong></p>
+
+                                    
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="tipoMensaje[0]" value="Bajo rendimiento" id="TIPO1" {{ old('tipoMensaje.0')=='Bajo rendimiento'?'checked':'' }} >
                                         <label class="form-check-label" for="TIPO1">
@@ -149,12 +165,11 @@
                                             Asistencia
                                         </label>
                                     </div>
-                                </div>
-                                    
 
-                              
-                                    
-                                <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+                                </div>
+                                @can('enviarMensaje', $paralelo)
+                                    <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+                                @endcan
                             </div>
                         </div>
                     </form>
