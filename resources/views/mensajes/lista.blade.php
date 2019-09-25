@@ -16,11 +16,6 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Estudiante</th>
-                                    <th scope="col">Identificacíon</th>
-                                    <th scope="col">Representante</th>
-                                    <th scope="col">Identificación representante</th>
-                                    <th scope="col">Email representante</th>
-                                    <th scope="col">Celular representante</th>
                                     <th scope="col">Tipo de comunicado</th>
                                     <th scope="col">Fecha y hora</th>
                                 </tr>
@@ -33,21 +28,6 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>
                                         {{ $msg->estudiante->user->name }}
-                                    </td>
-                                    <td>
-                                        {{ $msg->estudiante->user->identificacion }}
-                                    </td>
-                                    <td>
-                                        {{ $msg->estudiante->user->nombres_representante }}
-                                    </td>
-                                    <td>
-                                        {{ $msg->estudiante->user->identificacion_representante }}
-                                    </td>
-                                    <td>
-                                        {{ $msg->estudiante->user->email_representante }}
-                                    </td>
-                                    <td>
-                                        {{ $msg->estudiante->user->celular_representante }}
                                     </td>
                                     <td>
                                         {{ $msg->tipo }}

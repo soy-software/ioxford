@@ -25,6 +25,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// perfil de usuario
+Route::get('/mi-perfil', 'HomeController@perfil')->name('miPerfil');
+Route::post('/mi-perfil-actualizar', 'HomeController@actualizarMiPerfil')->name('actualizarMiPerfil');
+
 // periodos
 Route::get('/periodos', 'PeriodoController@index')->name('periodos');
 Route::post('/periodo-estado', 'PeriodoController@estado')->name('estadoPeriodo');

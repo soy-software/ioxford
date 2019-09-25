@@ -38,7 +38,11 @@
             </td>
         </table>
         <h3 style="text-align: center">PROCESO DE MEJORA CONTINUA</h3>
-        <p style="text-align: right">Salcedo {{ Carbon\Carbon::now() }}</p>
+        <p style="text-align: right">
+            Salcedo {{ Carbon\Carbon::now() }} <br>
+           Curso: <strong>{{ $estudiante->paralelo->cursoPeriodo->curso->nombre }}</strong>, Paralelo: <strong>{{ $estudiante->paralelo->nombre }}</strong>
+            
+        </p>
         <h2 style="text-align: center"><strong>CARTA DE COMPROMISO</strong></h2>
         <h3><strong>DIMENSIÓN A: </strong> ACOMPAÑAMIENTO INTEGRAL</h3>
         <table>
@@ -79,7 +83,7 @@
         <p style="text-align: justify">
             Capítulo IV de las acciones de evaluación, retroalimentación y refuerzo académico <strong>Art. 207.- Reuniones con los representantes legales de los estudiantes.</strong> El docente debe convocar a los representantes legales de los estudiantes a por lo menos dos (2) reuniones al año para determinar estrategias conjuntas, a fin de promover el mejoramiento académico de sus representados. Se debe dejar constancia escrita de las recomendaciones y sugerencias que se formulen para el mejoramiento académico.
         </p>
-
+        
         @if (count($mensajes)>0)
         <p>Listado de notificaciones</p>
         <div class="table-responsive">

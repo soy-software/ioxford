@@ -14,16 +14,16 @@
   <div class="card">
       <div class="card-header">
             
-            <a class="float-right" href="{{ route('reportesMensajes',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
-                <i class="far fa-file-pdf"></i> Reportes
+            <a class="float-right" href="{{ route('reportesMensajes',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Reportes de mensajes enviados">
+                    <i class="fas fa-clipboard"></i> Reportes
             </a>
             @can('actualizar', $paralelo->cursoPeriodo->periodo)
-            <a class="float-right mr-2" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
-                <i class="far fa-file-excel"></i> Importar estudiante
+            <a class="float-right mr-3" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
+                    <i class="fas fa-file-import"></i> Importar estudiante
             </a>
             
-            <a class="float-right mr-2" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
-                <i class="fas fa-plus"></i> Nuevo estudiante
+            <a class="float-right mr-3" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
+                <i class="fas fa-user-plus"></i> Nuevo estudiante
             </a>
             @endcan
             Listado de estudiantes
@@ -67,7 +67,7 @@
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                                         
                                                         
-                                                        <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Mensajes">
+                                                        <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn purple darken-3 text-white" data-toggle="tooltip" data-placement="top" title="Historial de mensajes">
                                                             <i class="fas fa-sticky-note"></i>
                                                         </a>
                                                         

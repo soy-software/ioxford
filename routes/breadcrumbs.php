@@ -18,7 +18,12 @@ Breadcrumbs::for('restablecerContrasenia', function ($trail) {
     $trail->push('Restablecer contraseña', url('/password/reset'));
 });
 
+// peril de usuario
 
+Breadcrumbs::for('miPerfil', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Mi perfil', route('miPerfil'));
+});
 // periodos
 Breadcrumbs::for('periodos', function ($trail) {
     $trail->parent('home');
