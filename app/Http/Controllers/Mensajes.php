@@ -78,7 +78,36 @@ class Mensajes extends Controller
         return view('mensajes.lista',$data);
     }
 
+    public function mensajeXestudiante($idEstudiante)
+    {
+        $estudiante=Estudiante::findOrFail($idEstudiante);
+        return view('mensajes.porEstudiantes',['estudiante'=>$estudiante]);
+    }
 
+    public function estado(Request $request)
+    {
+        
+        $request->validate([
+            'mensaje' => 'required|exists:mensajes,id',
+        ]);
+        $per=Mensaje::findOrFail($request->mensaje);
+        if($per->estado==true){
+            $per->estado=false;
+        }else{
+            $per->estado=true;
+        }
+        $per->save();
+        return response()->json(['ok'=>'Actualizado exitosamente']);
+    }
+
+    public function imprimirCartaCompromiso($idEstudiante)
+    {
+        $estudiante=Estudiante::findOrFail($idEstudiante);
+        $mensajes=$estudiante->mensajesImprimir;
+        $pdf = PDF::loadView('mensajes.imprimirCartaCompromiso', ['mensajes'=>$mensajes,'estudiante'=>$estudiante]);
+        return $pdf->inline('carta_compromiso.pdf');
+    }
+    // aun ver
     public function cartaCompromiso($idMsg)
     {
         $mensaje=Mensaje::findOrFail($idMsg);

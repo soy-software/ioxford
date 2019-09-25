@@ -18,4 +18,14 @@ class Estudiante extends Model
         return $this->belongsTo(Paralelo::class, 'paralelo_id');
     }
 
+    public function mensajes()
+    {
+        return $this->hasMany(Mensaje::class);
+    }
+
+    public function mensajesImprimir()
+    {
+        return $this->hasMany(Mensaje::class)->where('estado',true);
+    }
+
 }

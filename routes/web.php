@@ -52,6 +52,11 @@ Route::post('/enviar-mensajes', 'Mensajes@enviar')->name('enviarMensaje');
 Route::get('/reportes-mensajes/{paralelo}', 'Mensajes@reportes')->name('reportesMensajes');
 Route::get('/lista-mensajes/{fecha}', 'Mensajes@lista')->name('listaMensajes');
 Route::get('/carta-de-compromiso/{idMsg}', 'Mensajes@cartaCompromiso')->name('cartaCompromiso');
+Route::get('/mensajes-por-estudiante/{idEstudiante}', 'Mensajes@mensajeXestudiante')->name('mensajeXestudiante');
+Route::post('/estado-mensajes', 'Mensajes@estado')->name('estadoMensaje');
+Route::get('/imprimir-carta-compromiso/{idEstudiante}', 'Mensajes@imprimirCartaCompromiso')->name('imprimirCartaCompromiso');
+
+
 
 
 

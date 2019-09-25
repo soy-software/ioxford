@@ -68,7 +68,10 @@ Breadcrumbs::for('listaMensajes', function ($trail,$fecha) {
     $trail->push('Fecha '.$fecha->fecha, route('listaMensajes',$fecha->id));
 });
 
-
+Breadcrumbs::for('mensajeXestudiante', function ($trail,$estudiante) {
+    $trail->parent('estudiantes',$estudiante->paralelo);
+    $trail->push('Listado de mensajes', route('mensajeXestudiante',$estudiante->id));
+});
 
 
 

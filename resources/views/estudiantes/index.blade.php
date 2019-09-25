@@ -63,6 +63,10 @@
                                                     
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                                         
+                                                        <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Mensajes">
+                                                            <i class="fas fa-sticky-note"></i>
+                                                        </a>
+                                                        
                                                         <a href="{{ route('editarEstudiante',$est->estudiante->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
@@ -160,6 +164,10 @@
       </div>
   </div>
 </div>
+
+
+{{--  modal CARTA  --}}
+
 
 @prepend('scriptsHeader')
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/DataTables/datatables.min.css') }}"/>
