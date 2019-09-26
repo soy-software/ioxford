@@ -7,7 +7,22 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'U.E.OXFORD') }}</title>
+
+  <meta name="description" content="Unidad Educativa Oxford">
+  <meta name="keywords" content="Unidad,Educativa,Oxford,Salcedo,Escuela,Colegio,Institución">
+  <meta name="author" content="OXFORD">
+  
+  <!-- OpenGraph metadata-->
+  <meta property="og:locale" content="es" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="U.E.OXFORD" />
+  <meta property="og:description" content="Unidad Educativa Oxford" />
+  <meta property="og:url" content="{{ url('/') }}" />
+  <meta property="og:site_name" content="U.E.OXFORD" />
+  <meta property="og:image" content="{{ asset('img/oxford.png') }}" />
+
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('fontawesome-free-5.10.1-web/css/all.min.css') }}">
   <!-- Bootstrap core CSS -->
@@ -51,7 +66,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm blue darken-3">
             <div class="container">
                     <a class="navbar-brand logo" href="{{ url('/') }}">
-                        OXFORD
+                        {{ config('app.name', 'U.E.OXFORD') }}
                     </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

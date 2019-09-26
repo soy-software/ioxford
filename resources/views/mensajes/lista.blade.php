@@ -69,7 +69,7 @@
 @push('scriptsFooter')
     <script>
         
-  
+        $('#menuPeriodo').addClass('active');
         
         $('#tableMensaje').DataTable({
             "lengthChange": false,

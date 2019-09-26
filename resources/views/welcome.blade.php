@@ -1,13 +1,26 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name', 'U.E.OXFORD') }}</title>
 
+        <meta name="description" content="Unidad Educativa Oxford">
+        <meta name="keywords" content="Unidad,Educativa,Oxford,Salcedo,Escuela,Colegio,Institución">
+        <meta name="author" content="OXFORD">
+        
+        <!-- OpenGraph metadata-->
+        <meta property="og:locale" content="es" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="U.E.OXFORD" />
+        <meta property="og:description" content="Unidad Educativa Oxford" />
+        <meta property="og:url" content="{{ url('/') }}" />
+        <meta property="og:site_name" content="U.E.OXFORD" />
+        <meta property="og:image" content="{{ asset('img/oxford.png') }}" />
+
+        <link href="{{ asset('css/logo.css') }}" rel="stylesheet">
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -61,7 +74,13 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .logo{
+                font-family: 'Prata', serif;
+                font-style: italic;
+                font-weight: bold;
+            }
         </style>
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -80,10 +99,10 @@
             @endif
 
             <div class="content">
-                <div class="links">
+                <div class="links logo">
                     UNIDAD EDUCATIVA
                 </div>
-                <div class="title m-b-md">
+                <div class="title m-b-md logo">
                     OXFORD
                 </div>
             </div>

@@ -24,7 +24,9 @@
 @endprepend
 
 @push('scriptsFooter')
-    
+    <script>
+        $('#menuPeriodo').addClass('active');
+    </script>
 @endpush
 
 @endsection
