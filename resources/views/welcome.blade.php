@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{ config('app.name', 'U.E.OXFORD') }}</title>
-
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/oxford.ico') }}">
         <meta name="description" content="Unidad Educativa Oxford">
         <meta name="keywords" content="Unidad,Educativa,Oxford,Salcedo,Escuela,Colegio,Institución">
         <meta name="author" content="OXFORD">
