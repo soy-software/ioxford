@@ -192,7 +192,7 @@
 
         <!--First slide-->
         <div class="carousel-item active">
-          <div class="view" style="background-image: url('https://scontent.fatf1-1.fna.fbcdn.net/v/t1.0-9/71281170_1399526753549675_4525449749502885888_o.jpg?_nc_cat=109&_nc_oc=AQmYZPnVWpCpNo_D_GhRPJhCRw71VdnK3ttNWMGIuco1kQcAMI9n8_D8PhXxqvWsPrd-wWtqC-l-U5D0AuJKwW32&_nc_ht=scontent.fatf1-1.fna&oh=a13ba9cf375ac9758cdf087514fd900e&oe=5DFB43A7'); background-repeat: no-repeat; background-size: cover;">
+          <div class="view" style="background-image: url({{ asset('page/slider/1.jpg') }}); background-repeat: no-repeat; background-size: cover;">
 
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -222,7 +222,7 @@
 
         <!--Second slide-->
         <div class="carousel-item">
-          <div class="view" style="background-image: url('https://scontent.fatf1-1.fna.fbcdn.net/v/t1.0-9/71209085_1399526403549710_3842730385309958144_o.jpg?_nc_cat=110&_nc_oc=AQmtK__9UP51SPvjuflQ-DpbZ0vSRAkwYTrYMfy2jS6rbJkLu5R1wce8G4EByQ8xWsfzdMieuw_btV05oSBXemky&_nc_ht=scontent.fatf1-1.fna&oh=46bd77b05f62bff790ae123cd53b5bb7&oe=5DFE6C02'); background-repeat: no-repeat; background-size: cover;">
+          <div class="view" style="background-image: url({{ asset('page/slider/2.jpg') }}); background-repeat: no-repeat; background-size: cover;">
 
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -240,7 +240,7 @@
 
         <!--Third slide-->
         <div class="carousel-item">
-          <div class="view" style="background-image: url('https://scontent.fatf1-1.fna.fbcdn.net/v/t1.0-9/70653376_1395918197243864_5166439713959051264_o.jpg?_nc_cat=107&_nc_oc=AQlztAVmEO4O5fUBuAlURGyhIbLBOj071HgYDpxu4aVjaHvPw0CsENeHYiabgGOvkTNnzm7PHQ9pS_7Kl28qxuST&_nc_ht=scontent.fatf1-1.fna&oh=e61f2536cdf6b1133d682f676628946e&oe=5E37D6C0'); background-repeat: no-repeat; background-size: cover;">
+          <div class="view" style="background-image: url({{ asset('page/slider/3.jpg') }}); background-repeat: no-repeat; background-size: cover;">
 
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -288,7 +288,7 @@
           <!--Grid column-->
           <div class="col-md-6 mb-4">
 
-            <img src="http://ueoxford.org/images/titulos/quienes_somos/historia-de-la-institucion.jpg" class="img-fluid z-depth-1-half"
+            <img src="{{ asset('page/slider/historia.jpg') }}" class="img-fluid z-depth-1-half"
               alt="">
 
           </div>
@@ -361,7 +361,7 @@
                     </p>
                 </div>
                 <div class="tab-pane fade text-justify" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <img src="http://ueoxford.org/images/contenido/1-QUIENES_SOMOS/docentes/2.jpg" class="img-fluid" alt="">
+                    <img src="{{ asset('page/slider/organigrama.jpg') }}" class="img-fluid" alt="">
                 </div>
             </div>
 
@@ -446,7 +446,7 @@
 
           <!--Second column-->
           <div class="col-md-4 flex-center">
-            <img src="https://scontent.fatf1-1.fna.fbcdn.net/v/t1.0-9/70083198_1386196938215990_2162140722113806336_n.jpg?_nc_cat=102&_nc_oc=AQkoh87qBtCzyUq9X7gCvq9syzVYHVk2w0xYt-QAR3mv-aic1Zu1iHi9qIH6oNvoN1wOQNxx37wvxOKJzlKmIvlJ&_nc_ht=scontent.fatf1-1.fna&oh=885fd52275a17088790e9c1b0604c207&oe=5E312AE5" alt="MDB Magazine Template displayed on iPhone"
+            <img src="{{ asset('page/slider/oferta.jpg') }}" alt="MDB Magazine Template displayed on iPhone"
               class="z-depth-0 img-fluid">
           </div>
           <!--/Second column-->
