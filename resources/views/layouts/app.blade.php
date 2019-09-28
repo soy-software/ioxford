@@ -9,7 +9,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'U.E.OXFORD') }}</title>
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/oxford.ico') }}">
-
   <meta name="description" content="Unidad Educativa Oxford">
   <meta name="keywords" content="Unidad,Educativa,Oxford,Salcedo,Escuela,Colegio,Institución">
   <meta name="author" content="OXFORD">
@@ -66,7 +65,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm blue darken-3">
             <div class="container">
-                    <a class="navbar-brand logo" href="{{ url('/') }}">
+                    
+                    <a class="navbar-brand logo" href="{{ route('home') }}">
+                        <img src="{{ asset('img/logo.png') }}" height="30" class="d-inline-block align-top img-thumbnail" width="30" alt="mdb logo">
                         {{ config('app.name', 'U.E.OXFORD') }}
                     </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
