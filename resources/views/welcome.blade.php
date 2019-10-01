@@ -307,10 +307,6 @@
             </p>
             <!-- Main heading -->
             <!-- CTA -->
-            <a href="#" class="btn btn-outline-primary btn-sm btn-block">
-                Ver la historía completa ...
-                <i class="fas fa-quote-right"></i>
-            </a>
             
 
           </div>
@@ -506,19 +502,8 @@
       </section>
       <!--Section: Not enough-->
 
-      <hr class="mb-5">
+      <hr class="mb-3">
 
-      <!--Section: More-->
-      <section>
-
-        <h2 class="my-5 h3 text-center">NOTICIAS</h2>
-        <div class="alert alert-primary border border-primary" role="alert">
-            <strong>NO TENEMOS NINGUNA NOTICIA POR EL MOMENTO</strong>
-        </div>
-       
-
-      </section>
-      <!--Section: More-->
 
     </div>
   </main>
@@ -527,18 +512,20 @@
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="#">
-          CONTACTENOS
-        <i class="fas fa-edit ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="{{ route('login') }}"  role="button">
-        ACCEDER
-        <i class="fas fa-sign-in-alt ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
+    
+      
+      @auth
+      @else
+      <!--Call to action-->
+      <div class="pt-4">
+        <a class="btn btn-outline-white" href="{{ route('login') }}"  role="button">
+          ACCEDER
+          <i class="fas fa-sign-in-alt ml-2"></i>
+        </a>
+      </div>
+      <!--/.Call to action-->
+      @endauth
+    
 
     <hr class="my-4">
 

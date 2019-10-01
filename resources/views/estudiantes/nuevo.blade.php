@@ -72,8 +72,8 @@
                         @enderror
                     </div>
                     <div class="md-form md-outline">
-                        <label for="emailRepresentante" class="">Email de representante</label>
-                        <input id="emailRepresentante" type="email" class="form-control @error('emailRepresentante') is-invalid @enderror" name="emailRepresentante" value="{{ old('emailRepresentante') }}" autocomplete="emailRepresentante">
+                        <label for="emailRepresentante" class="">Email de representante<i class="text-danger">*</i> </label>
+                        <input id="emailRepresentante" type="email" class="form-control @error('emailRepresentante') is-invalid @enderror" name="emailRepresentante" value="{{ old('emailRepresentante') }}" autocomplete="emailRepresentante" required>
 
                         @error('emailRepresentante')
                             <span class="invalid-feedback" role="alert">

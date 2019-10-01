@@ -67,7 +67,7 @@
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                                         
                                                         
-                                                        <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn purple darken-3 text-white" data-toggle="tooltip" data-placement="top" title="Historial de mensajes">
+                                                        <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn purple darken-3 text-white" data-toggle="tooltip" data-placement="top" title="Generar carta de compromiso">
                                                             <i class="fas fa-sticky-note"></i>
                                                         </a>
                                                         
@@ -213,7 +213,7 @@
             quitarAlert();
             $.confirm({
                 title: 'Confirme!',
-                content: 'Está seguro de eliminar usuario!',
+                content: 'Está seguro de enviar mensaje/s!',
                 type: 'blue',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',

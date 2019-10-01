@@ -109,5 +109,12 @@ class Mensajes extends Controller
         $pdf = PDF::loadView('mensajes.imprimirCartaCompromiso', ['mensajes'=>$mensajes,'estudiante'=>$estudiante]);
         return $pdf->inline('carta_compromiso.pdf');
     }
+
+    public function pdfListaMensajes($idFecha)
+    {
+        $fecha=Fecha::findOrFail($idFecha);
+        $pdf = PDF::loadView('mensajes.pdfListaMensajes', ['fecha'=>$fecha]);
+        return $pdf->inline('lista_de_mensajes.pdf');
+    }
  
 }

@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Listado de estudiantes a quienes se ha enviado mensajes</div>
+                <div class="card-header">
+                    <a href="{{ route('pdfListaMensajes',$fecha->id) }}" target="_blanck" class="float-right"><i class="fas fa-file-pdf"></i> Descargar PDF</a>    
+                    Listado de estudiantes a quienes se ha enviado mensajes
+                </div>
 
                 <div class="card-body">
                     @if (count($fecha->mensajes)>0)

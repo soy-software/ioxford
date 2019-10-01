@@ -44,6 +44,7 @@ class MensajeNotifi extends Notification
     {
         $notifiable->email = $this->data['email'];
         return (new MailMessage)
+                ->subject('Notificación acádemica')
                 ->greeting('Hola!')
                 ->line($this->data['texto'])
                 ->line('Gracias por su atención!');

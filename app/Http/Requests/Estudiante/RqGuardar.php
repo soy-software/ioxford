@@ -26,11 +26,11 @@ class RqGuardar extends FormRequest
         $letras='/^[\pL\s\-]+$/u';
         return [
             'nombresApellidos'=>'required|max:191|regex:'.$letras,
-            'identificacionEstudiante'=>'required|max:191',
+            'identificacionEstudiante'=>'required|max:191|unique:users,identificacion',
             'nombresApellidosRepresentante'=>'required|max:191|regex:'.$letras,
             'identificacionRepresentante'=>'required',
-            'celularRepresentante'=>'nullable|numeric|digits_between:1,25',
-            'emailRepresentante'=>'nullable|email|string|max:191',
+            'celularRepresentante'=>'required|numeric|digits_between:1,25',
+            'emailRepresentante'=>'required|email|string|max:191',
 
         ];
     }

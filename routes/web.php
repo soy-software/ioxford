@@ -58,6 +58,7 @@ Route::get('/lista-mensajes/{fecha}', 'Mensajes@lista')->name('listaMensajes');
 Route::get('/mensajes-por-estudiante/{idEstudiante}', 'Mensajes@mensajeXestudiante')->name('mensajeXestudiante');
 Route::post('/estado-mensajes', 'Mensajes@estado')->name('estadoMensaje');
 Route::get('/imprimir-carta-compromiso/{idEstudiante}', 'Mensajes@imprimirCartaCompromiso')->name('imprimirCartaCompromiso');
+Route::get('/pfd-lista-mensajes/{fecha}', 'Mensajes@pdfListaMensajes')->name('pdfListaMensajes');
 
 
 

@@ -27,11 +27,11 @@ class RqActualizar extends FormRequest
         return [
             'estudiante'=>'required|exists:estudiantes,id',
             'nombresApellidos'=>'required|max:191|regex:'.$letras,
-            'identificacionEstudiante'=>'required|max:191',
+            'identificacionEstudiante'=>'required|max:191|unique:users,identificacion,'.$this->input('estudiante'),
             'nombresApellidosRepresentante'=>'required|max:191|regex:'.$letras,
             'identificacionRepresentante'=>'required',
-            'celularRepresentante'=>'nullable|numeric|digits_between:1,25',
-            'emailRepresentante'=>'nullable|email|string|max:191',
+            'celularRepresentante'=>'required|numeric|digits_between:1,25',
+            'emailRepresentante'=>'required|email|string|max:191',
 
         ];
     }

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <button type="button" class="btn btn-primary float-right" data-url="{{ route('imprimirCartaCompromiso',$estudiante->id) }}" onclick="imprimirCartaCompromiso(this);">Imprimir carta de compromiso</button>
-                    Lista de mensajes de estudiante {{ $estudiante->user->name }}
+                    Lista de faltas incurridas del estudiante: <strong>{{ $estudiante->user->name }}</strong>
                 </div>
 
                 <div class="card-body">

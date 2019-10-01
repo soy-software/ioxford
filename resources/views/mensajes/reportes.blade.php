@@ -9,9 +9,11 @@
 
                 <div class="card-body">
                    @foreach ($paralelo->fechas as $fecha)
-                       <a href="{{ route('listaMensajes',$fecha->id) }}">
+                       <li>
+                        <a href="{{ route('listaMensajes',$fecha->id) }}">
                             {{ $fecha->fecha }}
                        </a>
+                       </li>
                    @endforeach
                 </div>
             </div>
