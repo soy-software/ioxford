@@ -85,7 +85,7 @@
   <!-- Start your project here-->
   <div style="height: 100vh">
     <div class="flex-center flex-column">
-      <h1 class="animated fadeIn mb-2">ENVIO DE MENSAJE</h1>
+      <h1 class="animated fadeIn mb-2">ENVIO DE MENSAJE MASIVOS</h1>
 
       <h5 class="animated fadeIn mb-1">
         Innovadora aplicación de envío de SMS que permite automatizar los envíos creando condicionantes.
