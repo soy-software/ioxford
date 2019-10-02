@@ -23,11 +23,12 @@
 
         <table style="border-collapse: collapse; border: none;">
             <td class="noBorder">
-                    <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">
+                    {{--  <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">  --}}
+                    <img src="{!! public_path('img/ministerio.jpg') !!}" alt="" width="120px;" style="text-align: right;">
             </td>
             <td class="noBorder">
                 <h4 style="text-align: center;">
-                    UNIDAD EDUCATIVA OXFORD <br>
+                    UNIDAD EDUCATIVA ---- <br>
                     DEPARTAMENTO DE CONSEJERÍA ESTUDIANTIL <br>
                     {{ $estudiante->paralelo->cursoPeriodo->periodo->fecha_inicio }} - {{ $estudiante->paralelo->cursoPeriodo->periodo->fecha_final }}
                 </h4>
@@ -152,7 +153,7 @@
                 <td class="noBorder" style="text-align: center;">
                     <p>
                         
-                       Msc:Jenny Carrascal <br>
+                       Msc:----- <br>
                        <strong>VICERRECTORA</strong>
                     </p>
 
@@ -160,7 +161,7 @@
                 <td class="noBorder" style="text-align: center;">
                     <p>
                         
-                        Msc:Francisco Coque <br>
+                        Msc:------ <br>
                         <strong>DECE</strong>
                     </p>
                 </td>

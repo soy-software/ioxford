@@ -23,7 +23,8 @@
 
         <table style="border-collapse: collapse; border: none;">
             <td class="noBorder">
-                    <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">
+                <img src="{!! public_path('img/ministerio.jpg') !!}" alt="" width="120px;" style="text-align: right;">
+                    {{--  <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">  --}}
             </td>
             <td class="noBorder">
                 <h4 style="text-align: center;">

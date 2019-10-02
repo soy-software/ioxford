@@ -81,10 +81,29 @@
 
 <body>
 
+  
+  <!-- Start your project here-->
+  <div style="height: 100vh">
+    <div class="flex-center flex-column">
+      <h1 class="animated fadeIn mb-2">ENVIO DE MENSAJE</h1>
+
+      <h5 class="animated fadeIn mb-1">
+        Innovadora aplicación de envío de SMS que permite automatizar los envíos creando condicionantes.
+      </h5>
+
+      <p class="animated fadeIn text-muted">SOYSOFTWARE</p>
+      @auth
+        <a href="{{ route('home') }}" class="btn btn-outline-indigo">Administración</a>
+      @else
+        <a href="{{ route('login') }}" class="btn btn-outline-purple">Acceder</a>
+      @endauth
+    </div>
+  </div>
+  <!-- /Start your project here-->
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    {{--  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
       <div class="container">
 
         <!-- Brand -->
@@ -109,41 +128,6 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-          
-            {{--  <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">La institucíon</a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Historía</a>
-                    <a class="dropdown-item" href="#">Misión y Visión</a>
-                    <a class="dropdown-item" href="#">Organigrama</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Ofertas acádemicas</a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Preparatoría</a>
-                        <a class="dropdown-item" href="#">Básica elemental</a>
-                        <a class="dropdown-item" href="#">Básica media</a>
-                        <a class="dropdown-item" href="#">Básica superior</a>
-                        <a class="dropdown-item" href="#">Bachillerato</a>
-                        <a class="dropdown-item" href="#">Propuesta pedagógica</a>
-                    </div>
-                </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="" target="_blank">Comunidad educativa</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="" target="_blank">Noticias</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="" target="_blank">Contactos</a>
-            </li>  --}}
-
-
           </ul>
 
           <!-- Right -->
@@ -173,11 +157,11 @@
         </div>
 
       </div>
-    </nav>
+    </nav>  --}}
     <!-- Navbar -->
 
     <!--Carousel Wrapper-->
-    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    {{--  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
       <!--Indicators-->
       <ol class="carousel-indicators">
@@ -270,13 +254,13 @@
       </a>
       <!--/.Controls-->
 
-    </div>
+    </div>  --}}
     <!--/.Carousel Wrapper-->
 
   </header>
 
   <!--Main layout-->
-  <main>
+  {{--  <main>
     <div class="container">
 
       <!--Section: Main info-->
@@ -506,11 +490,11 @@
 
 
     </div>
-  </main>
+  </main>  --}}
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  {{--  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
     
       
@@ -544,7 +528,7 @@
     </div>
     <!--/.Copyright-->
 
-  </footer>
+  </footer>  --}}
   <!--/.Footer-->
 
   <!-- SCRIPTS -->

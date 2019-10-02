@@ -43,10 +43,10 @@ class User extends Authenticatable
         return $this->celular_representante;
     }
 
-    public function routeNotificationForMail($notification)
-    {
-        return $this->email_representante;
-    }
+    // public function routeNotificationForMail($notification)
+    // {
+    //     return $this->email_representante;
+    // }
 
 
 
