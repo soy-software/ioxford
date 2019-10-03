@@ -85,17 +85,18 @@
   <!-- Start your project here-->
   <div style="height: 100vh">
     <div class="flex-center flex-column">
-      <h1 class="animated fadeIn mb-2">ENVIO DE MENSAJE MASIVOS</h1>
-
+      <h1 class="animated fadeIn mb-2">
+          Innovadora aplicación de envío de SMS
+      </h1>
       <h5 class="animated fadeIn mb-1">
-        Innovadora aplicación de envío de SMS que permite automatizar los envíos creando condicionantes.
+        Que permite automatizar los envíos creando condicionantes.
       </h5>
 
-      <p class="animated fadeIn text-muted">SOYSOFTWARE</p>
+      <p class="animated fadeIn text-muted">EQUIPO SOYSOFTWARE</p>
       @auth
         <a href="{{ route('home') }}" class="btn btn-outline-indigo">Administración</a>
       @else
-        <a href="{{ route('login') }}" class="btn btn-outline-purple">Acceder</a>
+        <a href="{{ route('login') }}" class="btn btn-outline-elegant">Acceder</a>
       @endauth
     </div>
   </div>

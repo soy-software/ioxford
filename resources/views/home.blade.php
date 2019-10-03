@@ -6,17 +6,18 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center bg-primary">
-                    <h1 class="logo text-white">UNIDAD EDUCATIVA OXFORD</h1>
+                    <h1 class="logo text-white">UNIDAD EDUCATIVA ----</h1>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
                     
-                    <img src="{{ asset('img/dece.jpg') }}" alt="" class="img-fluid img-thumbnail">
+                    {{--  <img src="{{ asset('img/dece.jpg') }}" alt="" class="img-fluid img-thumbnail">  --}}
+                    <img src="{{ asset('img/foto.jpg') }}" alt="" class="img-fluid">
                 
 
                 </div>

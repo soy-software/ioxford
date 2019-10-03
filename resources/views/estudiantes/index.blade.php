@@ -13,13 +13,8 @@
 
   <div class="card">
       <div class="card-header">
-            <div class="alert alert-danger border border-danger" role="alert">
-                <strong>No puede enviar mensajes en estos momentos, ya que cuenta con créditos de 0.00 $</strong> <br>
-                <small>Debe realizar el pago, paar el envio de mensajes. más información a </small> 
-                <a href="https://soysoftware.com/" target="_blanck">Soysoftware</a>
-            </div>
             <a class="float-right" href="{{ route('reportesMensajes',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Reportes de mensajes enviados">
-                    <i class="fas fa-clipboard"></i> Reportes
+                <i class="fas fa-clipboard"></i> Reportes
             </a>
             @can('actualizar', $paralelo->cursoPeriodo->periodo)
             <a class="float-right mr-3" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">

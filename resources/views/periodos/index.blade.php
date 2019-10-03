@@ -25,16 +25,22 @@
                                 <table class="table table-bordered table-sm table-hover">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Fecha de inicio</th>
-                                        <th scope="col">Fecha de final</th>
-                                        <th scope="col">Estado</th>
-                                        <th scope="col">Acciones</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Fecha de inicio</th>
+                                            <th scope="col">Fecha de final</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php($i=0)
                                         @foreach ($periodos as $per)
+                                        @php($i++)
                                             <tr>
+                                                <th scope="row">
+                                                    {{ $i }}
+                                                </th>
                                                 <th scope="row">
                                                     {{ $per->nombre }}
                                                 </th>

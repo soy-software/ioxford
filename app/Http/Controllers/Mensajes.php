@@ -66,7 +66,7 @@ class Mensajes extends Controller
     public function reportes($idParalelo)
     {
         $paralelo=Paralelo::findOrFail($idParalelo);
-        $data = array('paralelo' => $paralelo);
+        $data = array('paralelo' => $paralelo,'fechas'=>$paralelo->fechas()->paginate(10));
         return view('mensajes.reportes',$data);
     }
 

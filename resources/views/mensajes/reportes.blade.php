@@ -8,13 +8,16 @@
                 <div class="card-header">Fechas</div>
 
                 <div class="card-body">
-                   @foreach ($paralelo->fechas as $fecha)
+                   @foreach ($fechas as $fecha)
                        <li>
-                        <a href="{{ route('listaMensajes',$fecha->id) }}">
+                        <a href="{{ route('listaMensajes',$fecha->id) }}" data-toggle="tooltip" data-placement="top" title="Ver listado de mensajes">
                             {{ $fecha->fecha }}
                        </a>
                        </li>
                    @endforeach
+                </div>          
+                <div class="card-footer text-muted">
+                        {{ $fechas->links() }}
                 </div>
             </div>
         </div>

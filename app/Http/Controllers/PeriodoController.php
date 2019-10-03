@@ -15,7 +15,7 @@ class PeriodoController extends Controller
 
     public function index()
     {
-        $periodos=Periodo::orderBy('fecha_final','desc')->paginate(10);
+        $periodos=Periodo::orderBy('created_at','desc')->paginate(10);
         return view('periodos.index',compact('periodos'));
     }
 
