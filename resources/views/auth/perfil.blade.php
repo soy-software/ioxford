@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center bg-primary">
+            <div class="card boder border-warning">
+                <div class="card-header text-center bg-warning">
                     <h1 class="logo text-white">Mi perfil</h1>
                 </div>
 
@@ -58,7 +58,7 @@
         
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-amber">
                                             {{ __('Actualizar') }}
                                         </button>
                                     </div>

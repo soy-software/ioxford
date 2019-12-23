@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="alert alert-primary alert-dismissible" style="display: none;" role="alert">
+    <div class="alert alert-warning alert-dismissible" style="display: none;" role="alert">
        <div class="listError"></div>
         <button type="button" class="close" onclick="quitarAlert(this);">
             <span aria-hidden="true">&times;</span>
@@ -75,7 +75,7 @@
                                                         @can('actualizar', $paralelo->cursoPeriodo->periodo)
                                                             
                                                         
-                                                        <a href="{{ route('editarEstudiante',$est->estudiante->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                        <a href="{{ route('editarEstudiante',$est->estudiante->id) }}" class="btn btn-amber" data-toggle="tooltip" data-placement="top" title="Editar">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <button type="button" class="btn btn-unique" data-url="{{ route('retirarEstudiante',$est->estudiante->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Quitar de paralelo">
@@ -121,7 +121,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"  id="PLATAFORMA2" checked disabled>
                                         <label class="form-check-label" for="PLATAFORMA2">
-                                            Correo eléctronico <i class="fas fa-envelope-open-text"></i>
+                                            Correo electrónico <i class="fas fa-envelope-open-text"></i>
                                         </label>
                                     </div>
                                     <div class="form-check">
@@ -139,27 +139,39 @@
                                     
                                 </div>
                                 <div class="card card-body mb-2">
-                                    <p class="mb-1"><strong>Detalle de mensaje</strong></p>
-                                    <textarea disabled name="texto" class="form-control" maxlength="140">Sr, Representante el estudiante (....). Ha incurrido una falta en: (....), por favor acercarse al DECE-OXFORD</textarea>
+                                    <p class="mb-1"><strong>Descripción solo para mensaje de texto</strong></p>
+                                    <textarea name="texto" disabled rows="4" class="form-control" maxlength="140">Sr, Representante el estudiante (....). Ha incurrido una falta en: (....), acercarse al DECE SAN FRANCISCO DE ASIS</textarea>
+                                </div>
+                                <div class="card card-body mb-2">
+                                    <p class="mb-1"><strong>Detalle descripción extra</strong></p>
+                                    <textarea name="extra" rows="4" class="form-control" maxlength="140" placeholder="Redactar.."></textarea>
+                                    <small id="emailHelp" class="form-text text-muted">
+                                        Solo se enviara a correo electrónico
+                                    </small>
                                 </div>
                                 <div class="card card-body mb-2">
                                     <p class="mb-1"><strong class="@error('tipoMensaje') text-danger @enderror">Seleccione tipo de comunicado</strong></p>
 
-                                    
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="tipoMensaje[0]" value="Bajo rendimiento" id="TIPO1" {{ old('tipoMensaje.0')=='Bajo rendimiento'?'checked':'' }} >
+                                        <input class="form-check-input" type="checkbox" name="tipoMensaje[0]" value="Ninguna" id="TIPO0" {{ old('tipoMensaje.0')=='Ninguna'?'checked':'' }} >
+                                        <label class="form-check-label" for="TIPO0">
+                                            Ninguno
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="tipoMensaje[1]" value="Bajo rendimiento" id="TIPO1" {{ old('tipoMensaje.1')=='Bajo rendimiento'?'checked':'' }} >
                                         <label class="form-check-label" for="TIPO1">
                                             Bajo rendimiento
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="tipoMensaje[1]" value="Comportamiento" id="TIPO2" {{ old('tipoMensaje.1')=='Comportamiento'?'checked':'' }}>
+                                        <input class="form-check-input" type="checkbox" name="tipoMensaje[2]" value="Comportamiento" id="TIPO2" {{ old('tipoMensaje.2')=='Comportamiento'?'checked':'' }}>
                                         <label class="form-check-label" for="TIPO2">
                                             Comportamiento
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Asistencia" id="TIPO3" name="tipoMensaje[2]" {{ old('tipoMensaje.2')=='Asistencia'?'checked':'' }}>
+                                        <input class="form-check-input" type="checkbox" value="Asistencia" id="TIPO3" name="tipoMensaje[3]" {{ old('tipoMensaje.3')=='Asistencia'?'checked':'' }}>
                                         <label class="form-check-label" for="TIPO3">
                                             Asistencia
                                         </label>
@@ -167,7 +179,7 @@
 
                                 </div>
                                 @can('enviarMensaje', $paralelo)
-                                    <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+                                    <button class="btn btn-amber btn-block" type="submit">Enviar mensaje</button>
                                 @endcan
                             </div>
                         </div>
@@ -213,7 +225,7 @@
             $.confirm({
                 title: 'Confirme!',
                 content: 'Está seguro de enviar mensaje/s!',
-                type: 'blue',
+                type: 'orange',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',
                 closeIcon: true,
@@ -221,7 +233,7 @@
                 buttons: {
                     confirmar: {
                         text: 'Confirmar', // text for button
-                        btnClass: 'btn-primary', // class for the button
+                        btnClass: 'btn-amber', // class for the button
                         action: function(heyThereButton){
                             $.blockUI({message:'<h1>Espere por favor.!</h1>'});
                             $.post( url,form.serialize())
@@ -302,7 +314,7 @@
             $.confirm({
                 title: 'Confirme!',
                 content: 'Está seguro de quitar estudiante!',
-                type: 'blue',
+                type: 'orange',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',
                 closeIcon: true,
@@ -310,7 +322,7 @@
                 buttons: {
                     confirmar: {
                         text: 'Confirmar', // text for button
-                        btnClass: 'btn-primary', // class for the button
+                        btnClass: 'btn-amber', // class for the button
                         action: function(heyThereButton){
                             window.location.replace($(arg).data('url'));
                         }

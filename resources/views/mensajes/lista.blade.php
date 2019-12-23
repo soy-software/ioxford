@@ -21,6 +21,7 @@
                                     <th scope="col">Estudiante</th>
                                     <th scope="col">Tipo de comunicado</th>
                                     <th scope="col">Fecha y hora</th>
+                                    <th scope="col">Enviado por</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,10 +34,13 @@
                                         {{ $msg->estudiante->user->name }}
                                     </td>
                                     <td>
-                                        {{ $msg->tipo }}
+                                        {{ $msg->tipo??'Ninguna' }}
                                     </td>
                                     <td>
                                         {{ $msg->created_at }}
+                                    </td>
+                                    <td>
+                                        {{ $msg->enviadoX->email }}
                                     </td>
                                     
                                 </tr>

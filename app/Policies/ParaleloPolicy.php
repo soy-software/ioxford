@@ -44,9 +44,6 @@ class ParaleloPolicy
                     return true;
                 }
                 break;
-            default :
-            $this->authorize('******', Periodo::class);   
-            break;
         }
     }
 }

@@ -53,7 +53,7 @@
                     {{ $msg->estudiante->user->celular_representante }}
                 </td>
                 <td>
-                    {{ $msg->tipo }}
+                    {{ $msg->tipo??'Ninguna' }}
                 </td>
                 <td>
                     {{ $msg->created_at }}

@@ -27,7 +27,7 @@ class RqEnviar extends FormRequest
             "estudiante"    => "required|array|min:1",
             "estudiante.*"  => "required|exists:estudiantes,id",
             "tipoMensaje"    => "required|array|min:1",
-            "tipoMensaje.*"  => "required|in:Bajo rendimiento,Comportamiento,Asistencia",
+            "tipoMensaje.*"  => "required|in:,Ninguna,Bajo rendimiento,Comportamiento,Asistencia",
             
         ];
     }

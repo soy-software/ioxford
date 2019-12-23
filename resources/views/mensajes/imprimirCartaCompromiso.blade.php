@@ -23,12 +23,11 @@
 
         <table style="border-collapse: collapse; border: none;">
             <td class="noBorder">
-                    {{--  <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">  --}}
-                    <img src="{!! public_path('img/ministerio.jpg') !!}" alt="" width="120px;" style="text-align: right;">
+                    <img src="{!! public_path('img/logo.png') !!}" alt="" width="120px;" style="text-align: right;">
             </td>
             <td class="noBorder">
                 <h4 style="text-align: center;">
-                    UNIDAD EDUCATIVA ---- <br>
+                    UNIDAD EDUCATIVA SAN FRANCISCO DE ASÍS <br>
                     DEPARTAMENTO DE CONSEJERÍA ESTUDIANTIL <br>
                     {{ $estudiante->paralelo->cursoPeriodo->periodo->fecha_inicio }} - {{ $estudiante->paralelo->cursoPeriodo->periodo->fecha_final }}
                 </h4>
@@ -130,7 +129,7 @@
             <tr>
                 <td class="noBorder" style="text-align: center;">
                     <p>
-                        ................ <br>
+                        ............................. <br>
                         N: <strong>{{ $estudiante->user->nombres_representante }}</strong> <br>
                         C.I: <strong>{{ $estudiante->user->identificacion_representante }}</strong> <br>
                         <strong>REPRESENTANTE</strong>
@@ -139,7 +138,7 @@
                 </td>
                 <td class="noBorder" style="text-align: center;">
                     <p>
-                        ................ <br>
+                        ............................. <br>
                         N: <strong>{{ $estudiante->user->name }}</strong> <br>
                         C.I: <strong>{{ $estudiante->user->identificacion }}</strong> <br>
                         <strong>ALUMNO</strong>
@@ -148,20 +147,22 @@
                 </td>
             </tr>
 
-
+            <tr>
+                <td class="noBorder" colspan="2">
+                    <hr>
+                </td>
+            </tr>
             <tr>
                 <td class="noBorder" style="text-align: center;">
                     <p>
-                        
-                       Msc:----- <br>
-                       <strong>VICERRECTORA</strong>
+                        Dr: Juan Paredes<br>
+                        <strong>Vicerrector</strong>
                     </p>
 
                 </td>
                 <td class="noBorder" style="text-align: center;">
                     <p>
-                        
-                        Msc:------ <br>
+                        Psic: Cristina Vivas<br>
                         <strong>DECE</strong>
                     </p>
                 </td>

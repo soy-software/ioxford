@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carta de compromiso</title>
+    <title>REPORTE DE MENSAJES</title>
     <style>
         table {
             border-collapse: collapse;
@@ -23,7 +23,7 @@
 
         <table style="border-collapse: collapse; border: none;">
             <td class="noBorder">
-                <img src="{!! public_path('img/ministerio.jpg') !!}" alt="" width="120px;" style="text-align: right;">
+                <img src="{!! public_path('img/logo.png') !!}" alt="" width="120px;" style="text-align: right;">
                     {{--  <img src="{!! public_path('img/oxford.png') !!}" alt="" width="120px;" style="text-align: left;">  --}}
             </td>
             <td class="noBorder">
@@ -51,6 +51,7 @@
                         <th scope="col">Estudiante</th>
                         <th scope="col">Tipo de comunicado</th>
                         <th scope="col">Fecha y hora</th>
+                        <th scope="col">Enviado por</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,6 +68,9 @@
                         </td>
                         <td>
                             {{ $msg->created_at }}
+                        </td>
+                        <td>
+                            {{ $msg->enviadoX->email }}
                         </td>
                         
                     </tr>

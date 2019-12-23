@@ -124,7 +124,7 @@
             $.confirm({
                 title: 'Confirme!',
                 content: 'Está seguro de eliminar paralelo!',
-                type: 'blue',
+                type: 'orange',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',
                 closeIcon: true,
@@ -132,7 +132,7 @@
                 buttons: {
                     confirmar: {
                         text: 'Confirmar', // text for button
-                        btnClass: 'btn-primary', // class for the button
+                        btnClass: 'btn-warning', // class for the button
                         action: function(heyThereButton){
                             window.location.replace($(arg).data('url'));
                         }

@@ -7,20 +7,20 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'U.E.OXFORD') }}</title>
+  <title>{{ config('app.name', 'U.E.S.F.A') }}</title>
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/oxford.ico') }}">
-  <meta name="description" content="Unidad Educativa Oxford">
-  <meta name="keywords" content="Unidad,Educativa,Oxford,Salcedo,Escuela,Colegio,Institución">
-  <meta name="author" content="OXFORD">
+  <meta name="description" content="Unidad Educativa San Francisco de Asís">
+  <meta name="keywords" content="Unidad,Educativa,San Francisco de Asís,Salcedo,Escuela,Colegio,Institución">
+  <meta name="author" content="SAN FRANCISCO">
   
   <!-- OpenGraph metadata-->
   <meta property="og:locale" content="es" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="U.E.OXFORD" />
-  <meta property="og:description" content="Unidad Educativa Oxford" />
+  <meta property="og:title" content="UNIDAD EDUCATIVA SAN FRANCISCO DE ASÍS" />
+  <meta property="og:description" content="UNIDAD EDUCATIVA SAN FRANCISCO DE ASÍS - SALCEDO" />
   <meta property="og:url" content="{{ url('/') }}" />
-  <meta property="og:site_name" content="U.E.OXFORD" />
-  <meta property="og:image" content="{{ asset('img/oxford.png') }}" />
+  <meta property="og:site_name" content="U.E.S.F.A" />
+  <meta property="og:image" content="{{ asset('img/logo.png') }}" />
 
 
   <!-- Font Awesome -->
@@ -127,6 +127,9 @@
                                 </li>
                             @endif  --}}
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://dashboard.nexmo.com/sign-in" target="_blanck">Nexmo app</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <i class="fas fa-user"></i>

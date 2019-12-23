@@ -4,6 +4,7 @@ namespace ioxford\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use ioxford\Http\Requests\Mensajes\RqEnviar;
@@ -41,14 +42,22 @@ class Mensajes extends Controller
                 foreach ($estudiantes as $estudiante) {
                     
                     $nombre=Str::limit($estudiante->user->name,25,'');
-                    $texto='Sr, Representante el estudiante '.$nombre.'. Ha incurrido una falta en: '.$tipomsj.', por favor acercarse al DECE-OXFORD';
-                    $data = array('email' =>$estudiante->user->email_representante??'' ,'texto'=>$texto );
+                    if($tipomsj=='Ninguna'){
+                        $texto=$request->extra;
+                    }else{
+                        $texto='Sr, Representante el estudiante '.$nombre.'. Ha incurrido una falta en: '.$tipomsj.', acercarse al DECE SAN FRANCISCO DE ASIS';
+                    }
+                    
+                    $data = array('email' =>$estudiante->user->email_representante??'' ,'extra'=>$request->extra,'texto'=>$texto,'tipo'=>$tipomsj );
                     $estudiante->user->notify(new MensajeNotifi($data));
                     $mensaje=new Mensaje();
                     $mensaje->fecha_id=$fecha->id;
                     $mensaje->estudiante_id=$estudiante->id;
-                    $mensaje->tipo=$tipomsj;
+                    if($tipomsj!='Ninguna'){
+                        $mensaje->tipo=$tipomsj;
+                    }
                     $mensaje->estado=true;
+                    $mensaje->enviadoPor=Auth::id();
                     $mensaje->save();
                 }    
             }

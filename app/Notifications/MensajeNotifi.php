@@ -31,7 +31,12 @@ class MensajeNotifi extends Notification
      */
     public function via($notifiable)
     {
-        return ['nexmo','mail'];
+        if($this->data['tipo']=='Ninguna'){
+            return ['mail'];
+        }else{
+            return ['nexmo','mail'];
+        }
+        
     }
 
     /**
@@ -47,6 +52,7 @@ class MensajeNotifi extends Notification
                 ->subject('Notificación acádemica')
                 ->greeting('Hola!')
                 ->line($this->data['texto'])
+                ->line($this->data['extra'])
                 ->line('Gracias por su atención!');
     }
 

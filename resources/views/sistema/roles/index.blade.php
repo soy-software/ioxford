@@ -57,7 +57,7 @@
             $.confirm({
                 title: 'Confirme!',
                 content: 'Está seguro de eliminar rol!',
-                type: 'blue',
+                type: 'orange',
                 icon: 'far fa-sad-cry',
                 theme: 'modern',
                 closeIcon: true,
@@ -65,7 +65,7 @@
                 buttons: {
                     confirmar: {
                         text: 'Confirmar', // text for button
-                        btnClass: 'btn-primary', // class for the button
+                        btnClass: 'btn-amber', // class for the button
                         action: function(heyThereButton){
                             $.blockUI({message:'<h1>Espere por favor.!</h1>'});
                             $.post( $(arg).data('url'), { id: $(arg).data('id') })

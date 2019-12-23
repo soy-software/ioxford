@@ -62,35 +62,35 @@
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                         @can('actualizar', $per)
-                                                            <a href="{{ route('editarPeriodo',$per->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
+                                                            <a href="{{ route('editarPeriodo',$per->id) }}" class="btn btn-unique" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
                                                         @endcan
 
                                                         @can('Educación inicial', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'EI','periodo'=>$per->id]) }}" class="btn primary-color-dark text-white" data-toggle="tooltip" data-placement="top" title="Educación inicial">
+                                                            <a href="{{ route('cursos',['tipo'=>'EI','periodo'=>$per->id]) }}" class="btn amber" data-toggle="tooltip" data-placement="top" title="Educación inicial">
                                                                 Educación inicial
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Básica elemental', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BE','periodo'=>$per->id]) }}" class="btn primary-color text-white" data-toggle="tooltip" data-placement="top" title="Básica elemental">
+                                                            <a href="{{ route('cursos',['tipo'=>'BE','periodo'=>$per->id]) }}" class="btn amber darken-1" data-toggle="tooltip" data-placement="top" title="Básica elemental">
                                                                 B.elemental
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Básica media', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BM','periodo'=>$per->id]) }}" class="btn info-color text-white" data-toggle="tooltip" data-placement="top" title="Básica media">
+                                                            <a href="{{ route('cursos',['tipo'=>'BM','periodo'=>$per->id]) }}" class="btn amber darken-2" data-toggle="tooltip" data-placement="top" title="Básica media">
                                                                 B.media
                                                             </a>
                                                         @endcan
                                                        
                                                         @can('Básica superior', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BS','periodo'=>$per->id]) }}" class="btn green text-white" data-toggle="tooltip" data-placement="top" title="Básica superior">
+                                                            <a href="{{ route('cursos',['tipo'=>'BS','periodo'=>$per->id]) }}" class="btn  amber darken-3" data-toggle="tooltip" data-placement="top" title="Básica superior">
                                                                 B.superior
                                                             </a>    
                                                         @endcan
                                                         
                                                         @can('Bachillerato unificado', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BU','periodo'=>$per->id]) }}" class="btn green lighten-1 text-white" data-toggle="tooltip" data-placement="top" title="Bachillerato unificaco">
+                                                            <a href="{{ route('cursos',['tipo'=>'BU','periodo'=>$per->id]) }}" class="btn amber darken-4" data-toggle="tooltip" data-placement="top" title="Bachillerato unificaco">
                                                                 B.unificado
                                                             </a>    
                                                         @endcan

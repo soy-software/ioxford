@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Fechas'])
 @section('breadcrumbs', Breadcrumbs::render('reportesMensajes',$paralelo))
 @section('content')
 <div class="container">
