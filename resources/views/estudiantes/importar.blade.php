@@ -54,12 +54,12 @@
                         
             </div>
             <div class="card-footer text-muted">
-                <button class="btn btn-primary">Importar estudiantes</button>
+                <button class="btn btn-amber">Importar estudiantes</button>
             </div>
         </div>
     </form>
     @else
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-warning" role="alert">
         <strong>No puede crear estudiantes en este período</strong>
     </div>
     @endcan

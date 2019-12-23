@@ -63,10 +63,10 @@
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm blue darken-3">
+        <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm amber darken-3">
             <div class="container">
                     
-                    <a class="navbar-brand logo" href="{{ route('home') }}">
+                    <a class="navbar-brand logo" href="{{ url('/') }}">
                         <img src="{{ asset('img/logo.png') }}" height="30" class="d-inline-block align-top img-thumbnail" width="30" alt="mdb logo">
                         {{ config('app.name', 'U.E.OXFORD') }}
                     </a>
@@ -161,7 +161,7 @@
             @yield('breadcrumbs')
             @if ($errors->any())
                 <div class="container">
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <div class="alert alert-warning border border-warning alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>

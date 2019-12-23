@@ -21,7 +21,7 @@
                     </span>
                 @enderror
                 <div class="input-group-append">
-                    <button class="btn btn-md btn-primary m-0 px-3 py-2 z-depth-0" type="submit" id="button-addon2">Guardar</button>
+                    <button class="btn btn-md btn-amber m-0 px-3 py-2 z-depth-0" type="submit" id="button-addon2">Guardar</button>
                 </div>
             </div>
         </form>

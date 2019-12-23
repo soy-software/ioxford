@@ -65,9 +65,9 @@
                                                             <a href="{{ route('editarPeriodo',$per->id) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
                                                         @endcan
 
-                                                        @can('Preparatoría', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'PRE','periodo'=>$per->id]) }}" class="btn primary-color-dark text-white" data-toggle="tooltip" data-placement="top" title="Preparatoría">
-                                                                Preparatoría
+                                                        @can('Educación inicial', ioxford\Models\Periodo::class)
+                                                            <a href="{{ route('cursos',['tipo'=>'EI','periodo'=>$per->id]) }}" class="btn primary-color-dark text-white" data-toggle="tooltip" data-placement="top" title="Educación inicial">
+                                                                Educación inicial
                                                             </a>    
                                                         @endcan
                                                         
@@ -89,9 +89,9 @@
                                                             </a>    
                                                         @endcan
                                                         
-                                                        @can('Bachillerato', ioxford\Models\Periodo::class)
-                                                            <a href="{{ route('cursos',['tipo'=>'BA','periodo'=>$per->id]) }}" class="btn green lighten-1 text-white" data-toggle="tooltip" data-placement="top" title="Bachillerato">
-                                                                Bachillerato
+                                                        @can('Bachillerato unificado', ioxford\Models\Periodo::class)
+                                                            <a href="{{ route('cursos',['tipo'=>'BU','periodo'=>$per->id]) }}" class="btn green lighten-1 text-white" data-toggle="tooltip" data-placement="top" title="Bachillerato unificaco">
+                                                                B.unificado
                                                             </a>    
                                                         @endcan
                                                         
@@ -105,7 +105,7 @@
                             </div>
                             {{ $periodos->links() }}
                         @else
-                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     <span class="sr-only">Close</span>
@@ -162,7 +162,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-amber">
                                     Guardar
                                 </button>
                             </div>

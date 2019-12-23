@@ -39,6 +39,7 @@ Breadcrumbs::for('editarPeriodo', function ($trail,$periodo) {
 // cursos
 Breadcrumbs::for('cursos', function ($trail,$tipo,$periodo) {
     $trail->parent('periodos');
+  
     $trail->push('Cursos de '.$tipo, route('cursos',['tipo'=>$tipo,'periodo'=>$periodo->id]));
 });
 

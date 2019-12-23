@@ -93,7 +93,7 @@
                                     </table>
                                 </div>
         
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-amber">
                                     {{ __('Register') }}
                                 </button>
                                     

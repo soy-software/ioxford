@@ -30,7 +30,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
-                                        <tr class="bg-primary">
+                                        <tr class="bg orange">
                                             <th scope="col" colspan="3">
                                                 <strong class="text-white">{{ $cur->nombre }}</strong>
                                             </th>
@@ -44,7 +44,7 @@
                                                 
                                                 <td>
                                                     <div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
-                                                    <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Listado de estudiantes">Estudiantes</a>
+                                                    <a href="{{ route('estudiantes',$paralelo->id) }}" class="btn amber" data-toggle="tooltip" data-placement="top" title="Listado de estudiantes">Estudiantes</a>
                                                     @can('actualizar', $periodo)
                                                         <button type="button" class="btn btn-unique" data-url="{{ route('eliminarParalelo',$paralelo->id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                                             <i class="fas fa-trash-alt"></i>
@@ -97,10 +97,10 @@
                               <option value="D">D</option>
                             </select>
                         </div>
-                        <button class="btn btn-primary">Guardar</button>
+                        <button class="btn btn-amber">Guardar</button>
                     </form>
                     @else
-                    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         <strong>No asignar paralelo a curso en este período</strong>
                     </div>
                     @endcan

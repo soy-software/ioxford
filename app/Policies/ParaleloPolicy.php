@@ -15,8 +15,8 @@ class ParaleloPolicy
     public function enviarMensaje(User $user, Paralelo $paralelo)
     {
         switch ($paralelo->cursoPeriodo->curso->tipo) {
-            case 'PRE':
-                if($user->can('Preparatoría') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
+            case 'IN':
+                if($user->can('Educación inicial') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
                     return true;
                 }
                 break;
@@ -39,8 +39,8 @@ class ParaleloPolicy
                     return true;
                 }
                 break;
-            case 'BA':
-                if($user->can('Bachillerato') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
+            case 'BU':
+                if($user->can('Bachillerato unificado') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
                     return true;
                 }
                 break;

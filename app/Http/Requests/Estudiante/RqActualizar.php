@@ -27,7 +27,7 @@ class RqActualizar extends FormRequest
         return [
             'estudiante'=>'required|exists:estudiantes,id',
             'nombresApellidos'=>'required|max:191|regex:'.$letras,
-            'identificacionEstudiante'=>'required|max:191|unique:users,identificacion,'.$this->input('estudiante'),
+            'identificacionEstudiante'=>'required|max:191',
             'nombresApellidosRepresentante'=>'required|max:191|regex:'.$letras,
             'identificacionRepresentante'=>'required',
             'celularRepresentante'=>'required|numeric|digits_between:1,25',

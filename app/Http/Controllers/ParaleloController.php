@@ -16,7 +16,7 @@ class ParaleloController extends Controller
     {
         
         $request->validate([
-            'tipo' => 'required|in:PRE,BE,BM,BS,BA',
+            'tipo' => 'required|in:EI,BE,BM,BS,BU',
             'periodo' => 'required|exists:periodos,id',
             "curso_periodos"    => "nullable|array",
             "curso_periodos.*"  => "nullable|exists:curso_periodos,id",

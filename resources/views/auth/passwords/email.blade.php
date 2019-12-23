@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center bg-primary">
+                <div class="card-header text-center bg-warning">
                     {{--  <img src="{{ asset('img/oxford.png') }}" alt="" class="card-img-top">  --}}
-                    Mensajería
+                    Restablecer contraseña
                 </div>
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-warning" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
@@ -33,7 +33,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-amber">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

@@ -21,8 +21,8 @@ class EstudianteController extends Controller
     public function accesso($tipo)
     {
         switch ($tipo) {
-            case 'PRE':
-                $this->authorize('Preparatoría', Periodo::class);   
+            case 'EI':
+                $this->authorize('Educación inicial', Periodo::class);   
                 break;
             
             case 'BE':
@@ -34,8 +34,8 @@ class EstudianteController extends Controller
             case 'BS':
                 $this->authorize('Básica superior', Periodo::class);   
                 break;
-            case 'BA':
-                $this->authorize('Bachillerato', Periodo::class);   
+            case 'BU':
+                $this->authorize('Bachillerato unificado', Periodo::class);   
                 break;
             default :
             $this->authorize('******', Periodo::class);   

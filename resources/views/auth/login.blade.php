@@ -3,11 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center bg-primary">
-                    {{--  <img src="{{ asset('img/oxford.png') }}" alt="" class="card-img-top">  --}}
-                    Mensajería
+        <div class="col-md-6 mt-5">
+            <div class="card border border-warning mt-5">
+                <div class="card-header text-center bg-warning">
+                    Acceder al sistema
                 </div>
 
                 <div class="card-body">
@@ -52,7 +51,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-amber">
                             {{ __('Login') }}
                         </button>
 
@@ -68,4 +67,19 @@
         </div>
     </div>
 </div>
+
+@prepend('scriptsHeader')
+    <style>
+        body {
+            background-image: url("{{ asset('img/inicio2.jpeg') }}");
+            background-color: #cccccc; /* Used if the image is unavailable */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover; /* Resize the background image to cover the entire container */
+
+           }
+    </style>
+@endprepend
+
+
 @endsection

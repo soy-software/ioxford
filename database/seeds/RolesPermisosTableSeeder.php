@@ -15,16 +15,13 @@ class RolesPermisosTableSeeder extends Seeder
         $roleDece = Role::create(['name' => 'DECE']);
         Role::create(['name' => 'ESTUDIANTE']);
         Permission::create(['name' => 'Períodos']);
-        Permission::create(['name' => 'Preparatoría']);
+        Permission::create(['name' => 'Educación inicial']);
         Permission::create(['name' => 'Básica elemental']);
         Permission::create(['name' => 'Básica media']);
         Permission::create(['name' => 'Básica superior']);
-        Permission::create(['name' => 'Bachillerato']);
-        Permission::create(['name' => 'Noticias']);
+        Permission::create(['name' => 'Bachillerato unificado']);
         Permission::create(['name' => 'Usuarios']);
-
         
-
         $role=Role::findByName('DECE');
         $role->syncPermissions(Permission::all());
     }

@@ -13,14 +13,14 @@ class CursoTableSeeder extends Seeder
     public function run()
     {
 
-        $data_pre = array('Inicial 1','Inicial 2');
-        $data_be = array('Segundo','Tercero','Cuarto');
+        $data_ei = array('Inicial 1','Inicial 2');
+        $data_be = array('Primero','Segundo','Tercero','Cuarto');
         $data_bm = array('Quinto','Sexto','Séptimo');
-        $data_ba = array('Primero','Segundo','Tercero');
         $data_bs = array('Octavo','Noveno','Décimo');
+        $data_bu = array('Primero','Segundo','Tercero');
         
-        foreach ($data_pre as $pre) {
-            Curso::create(['nombre'=>$pre,'tipo'=>'PRE']);
+        foreach ($data_ei as $ei) {
+            Curso::create(['nombre'=>$ei,'tipo'=>'EI']);
         }
         foreach ($data_be as $be) {
             Curso::create(['nombre'=>$be,'tipo'=>'BE']);
@@ -31,8 +31,8 @@ class CursoTableSeeder extends Seeder
         foreach ($data_bs as $bs) {
             Curso::create(['nombre'=>$bs,'tipo'=>'BS']);
         }
-        foreach ($data_ba as $ba) {
-            Curso::create(['nombre'=>$ba,'tipo'=>'BA']);
+        foreach ($data_bu as $bu) {
+            Curso::create(['nombre'=>$bu,'tipo'=>'BU']);
         }
         
     }

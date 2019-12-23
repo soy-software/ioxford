@@ -86,7 +86,7 @@
 
             </div>
             <div class="card-footer text-muted">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-amber">
                     {{ __('Guardar') }}
                 </button>
             </div>

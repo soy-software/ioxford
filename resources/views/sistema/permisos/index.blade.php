@@ -38,18 +38,18 @@
             </div>
         </div>
         <div class="card-footer text-muted">
-            <button class="btn btn-primary">Actualizar permisos</button>
+            <button class="btn btn-amber">Actualizar permisos</button>
         </div>
     </div>
 </form>
 </div>
 
-@push('linksCabeza')
+@push('scriptsHeader')
 
 
 @endpush
 
-@prepend('linksPie')
+@prepend('scriptsFooter')
     <script>
         $('#menuRoles').addClass('active');
     </script>

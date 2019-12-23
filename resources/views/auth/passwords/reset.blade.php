@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center bg-primary">
+                <div class="card-header text-center bg-warning">
                     {{--  <img src="{{ asset('img/oxford.png') }}" alt="" class="card-img-top">  --}}
-                    Mensajeŕia
+                    Restablecer contraseña
                 </div>
 
                 <div class="card-body">
@@ -48,7 +48,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-amber">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>

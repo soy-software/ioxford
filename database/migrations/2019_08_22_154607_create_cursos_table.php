@@ -17,7 +17,7 @@ class CreateCursosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre');
-            $table->enum('tipo',['PRE','BE','BM','BS','BA']);
+            $table->enum('tipo',['EI','BE','BM','BS','BU']);
         });
     }
 
