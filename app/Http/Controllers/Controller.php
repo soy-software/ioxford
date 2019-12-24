@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

@@ -1,9 +1,9 @@
 <?php
 
-namespace ioxford\Policies;
+namespace iouesa\Policies;
 
-use ioxford\User;
-use ioxford\Models\Periodo;
+use iouesa\User;
+use iouesa\Models\Periodo;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PeriodoPolicy
@@ -13,7 +13,7 @@ class PeriodoPolicy
     public function crear(User $user)
     {
         $per=Periodo::where('estado','Proceso')->first();
-        if (!$per && $user->can('Períodos')) {
+        if ($user->can('Períodos')) {
             return true;
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Providers;
+namespace iouesa\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'ioxford\Http\Controllers';
+    protected $namespace = 'iouesa\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

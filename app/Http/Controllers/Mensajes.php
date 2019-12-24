@@ -1,18 +1,18 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use ioxford\Http\Requests\Mensajes\RqEnviar;
-use ioxford\Models\Estudiante;
-use ioxford\Models\Fecha;
-use ioxford\Models\Paralelo;
-use ioxford\Notifications\MensajeNotifi;
-use ioxford\Models\Mensaje;
+use iouesa\Http\Requests\Mensajes\RqEnviar;
+use iouesa\Models\Estudiante;
+use iouesa\Models\Fecha;
+use iouesa\Models\Paralelo;
+use iouesa\Notifications\MensajeNotifi;
+use iouesa\Models\Mensaje;
 use PDF;
 class Mensajes extends Controller
 {
@@ -62,6 +62,11 @@ class Mensajes extends Controller
                 }    
             }
 
+            activity()
+        ->causedBy(Auth::user())
+        ->performedOn($paralelo)
+        ->log('Envio mensaje en paralelo ',$paralelo->nombre);
+
             DB::commit();
             return response()->json(['success'=>'Mensaje enviado exitosamente']);
         } catch (\Exception $th) {
@@ -108,6 +113,12 @@ class Mensajes extends Controller
             $per->estado=true;
         }
         $per->save();
+
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($per)
+        ->log('Cambio de estado de mensaje a '.$per->estado);
+
         return response()->json(['ok'=>'Actualizado exitosamente']);
     }
 
@@ -116,6 +127,12 @@ class Mensajes extends Controller
         $estudiante=Estudiante::findOrFail($idEstudiante);
         $mensajes=$estudiante->mensajesImprimir;
         $pdf = PDF::loadView('mensajes.imprimirCartaCompromiso', ['mensajes'=>$mensajes,'estudiante'=>$estudiante]);
+
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($estudiante)
+        ->log('Imprimio carta de presentación de '.$estudiante->user->identificacion??'');
+
         return $pdf->inline('carta_compromiso.pdf');
     }
 

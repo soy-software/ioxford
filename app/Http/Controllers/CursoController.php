@@ -1,9 +1,9 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Http\Request;
-use ioxford\Models\Periodo;
+use iouesa\Models\Periodo;
 
 class CursoController extends Controller
 {

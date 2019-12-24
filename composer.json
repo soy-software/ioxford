@@ -19,6 +19,7 @@
         "laravel/nexmo-notification-channel": "^2.1",
         "laravel/tinker": "^1.0",
         "laraveles/spanish": "^1.2",
+        "spatie/laravel-activitylog": "^3.9",
         "spatie/laravel-permission": "^2.37",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-buttons": "^4.0",
@@ -44,7 +45,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ioxford\\": "app/"
+            "iouesa\\": "app/"
         },
         "classmap": [
             "database/seeds",

@@ -6,7 +6,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                    
+                    @role('DECE')
                     <button type="button" class="btn btn-amber float-right" data-url="{{ route('imprimirCartaCompromiso',$estudiante->id) }}" onclick="imprimirCartaCompromiso(this);">Imprimir carta de compromiso</button>
+                    @endrole
                     Lista de faltas incurridas del estudiante: <strong>{{ $estudiante->user->name }}</strong>
                 </div>
 

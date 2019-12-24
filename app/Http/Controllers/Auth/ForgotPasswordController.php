@@ -1,8 +1,8 @@
 <?php
 
-namespace ioxford\Http\Controllers\Auth;
+namespace iouesa\Http\Controllers\Auth;
 
-use ioxford\Http\Controllers\Controller;
+use iouesa\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        ioxford\Providers\AppServiceProvider::class,
-        ioxford\Providers\AuthServiceProvider::class,
-        // ioxford\Providers\BroadcastServiceProvider::class,
-        ioxford\Providers\EventServiceProvider::class,
-        ioxford\Providers\RouteServiceProvider::class,
+        iouesa\Providers\AppServiceProvider::class,
+        iouesa\Providers\AuthServiceProvider::class,
+        // iouesa\Providers\BroadcastServiceProvider::class,
+        iouesa\Providers\EventServiceProvider::class,
+        iouesa\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\HtmlServiceProvider::class,

@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Middleware;
+namespace iouesa\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

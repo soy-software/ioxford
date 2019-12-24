@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Requests\Estudiante;
+namespace iouesa\Http\Requests\Estudiante;
 
 use Illuminate\Foundation\Http\FormRequest;
 

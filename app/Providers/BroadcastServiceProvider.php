@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Providers;
+namespace iouesa\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

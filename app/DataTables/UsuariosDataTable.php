@@ -1,8 +1,8 @@
 <?php
 
-namespace ioxford\DataTables;
+namespace iouesa\DataTables;
 
-use ioxford\User;
+use iouesa\User;
 use Yajra\DataTables\Services\DataTable;
 
 class UsuariosDataTable extends DataTable
@@ -24,7 +24,7 @@ class UsuariosDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \ioxford\User $model
+     * @param \iouesa\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(User $model)

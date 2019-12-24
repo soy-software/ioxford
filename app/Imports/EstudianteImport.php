@@ -1,10 +1,10 @@
 <?php
 
-namespace ioxford\Imports;
+namespace iouesa\Imports;
 
-use ioxford\Models\Estudiante;
-use ioxford\Models\Paralelo;
-use ioxford\User;
+use iouesa\Models\Estudiante;
+use iouesa\Models\Paralelo;
+use iouesa\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class EstudianteImport implements ToModel

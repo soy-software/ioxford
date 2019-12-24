@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => ioxford\User::class,
+            'model' => iouesa\User::class,
         ],
 
         // 'users' => [

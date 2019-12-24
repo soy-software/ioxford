@@ -1,12 +1,12 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use ioxford\DataTables\UsuariosDataTable;
-use ioxford\User;
+use iouesa\DataTables\UsuariosDataTable;
+use iouesa\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 class UsuariosController extends Controller
@@ -42,6 +42,12 @@ class UsuariosController extends Controller
         $user->save();
         $user->assignRole($request->roles);
          
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($user)
+        ->log('Creo el usuario '.$user->identificacion??'');
+
+
         $request->session()->flash('success','Usuario ingresado');
         return redirect()->route('usuarios');
     }
@@ -64,6 +70,12 @@ class UsuariosController extends Controller
             if(Auth::user()->id!=$user->id){
                 $user->delete();
                 DB::commit();
+
+                activity()
+            ->causedBy(Auth::user())
+            ->performedOn($user)
+            ->log('Elimino al usuario '.$user->identificacion??'');
+
                 return response()->json(['success'=>'Usuario eliminado']);
                 
             }else{
@@ -97,6 +109,13 @@ class UsuariosController extends Controller
             $user->password=Hash::make($request->password);
         }
         $user->save();
+
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($user)
+            ->log('Actualizo al usuario '.$user->identificacion??'');
+
+
         $user->syncRoles($request->roles);
         $request->session()->flash('success','Usuario actualizado');
 

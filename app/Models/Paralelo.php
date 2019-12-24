@@ -1,9 +1,9 @@
 <?php
 
-namespace ioxford\Models;
+namespace iouesa\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use ioxford\User;
+use iouesa\User;
 
 class Paralelo extends Model
 {

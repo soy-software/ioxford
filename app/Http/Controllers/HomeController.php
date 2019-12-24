@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

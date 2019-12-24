@@ -52,7 +52,7 @@
                                                 </td>
                                                 
                                                 <td>
-                                                    @can('Períodos', ioxford\Models\Periodo::class)
+                                                    @can('Períodos', iouesa\Models\Periodo::class)
                                                         <input type="checkbox" value="{{ $per->id }}" class="toggle-estado" {{ $per->estado=='Proceso'?'checked':'' }} data-toggle="toggle" data-on="Proceso" data-off="Finalizado" data-onstyle="success" data-offstyle="danger" data-size="sm">    
                                                     @else
                                                     <span class="badge badge-{{ $per->estado=='Proceso'?'success':'danger' }}">{{ $per->estado }}</span>
@@ -65,31 +65,31 @@
                                                             <a href="{{ route('editarPeriodo',$per->id) }}" class="btn btn-unique" data-toggle="tooltip" data-placement="top" title="Editar">Editar</a>
                                                         @endcan
 
-                                                        @can('Educación inicial', ioxford\Models\Periodo::class)
+                                                        @can('Educación inicial', iouesa\Models\Periodo::class)
                                                             <a href="{{ route('cursos',['tipo'=>'EI','periodo'=>$per->id]) }}" class="btn amber" data-toggle="tooltip" data-placement="top" title="Educación inicial">
                                                                 Educación inicial
                                                             </a>    
                                                         @endcan
                                                         
-                                                        @can('Básica elemental', ioxford\Models\Periodo::class)
+                                                        @can('Básica elemental', iouesa\Models\Periodo::class)
                                                             <a href="{{ route('cursos',['tipo'=>'BE','periodo'=>$per->id]) }}" class="btn amber darken-1" data-toggle="tooltip" data-placement="top" title="Básica elemental">
                                                                 B.elemental
                                                             </a>    
                                                         @endcan
                                                         
-                                                        @can('Básica media', ioxford\Models\Periodo::class)
+                                                        @can('Básica media', iouesa\Models\Periodo::class)
                                                             <a href="{{ route('cursos',['tipo'=>'BM','periodo'=>$per->id]) }}" class="btn amber darken-2" data-toggle="tooltip" data-placement="top" title="Básica media">
                                                                 B.media
                                                             </a>
                                                         @endcan
                                                        
-                                                        @can('Básica superior', ioxford\Models\Periodo::class)
+                                                        @can('Básica superior', iouesa\Models\Periodo::class)
                                                             <a href="{{ route('cursos',['tipo'=>'BS','periodo'=>$per->id]) }}" class="btn  amber darken-3" data-toggle="tooltip" data-placement="top" title="Básica superior">
                                                                 B.superior
                                                             </a>    
                                                         @endcan
                                                         
-                                                        @can('Bachillerato unificado', ioxford\Models\Periodo::class)
+                                                        @can('Bachillerato unificado', iouesa\Models\Periodo::class)
                                                             <a href="{{ route('cursos',['tipo'=>'BU','periodo'=>$per->id]) }}" class="btn amber darken-4" data-toggle="tooltip" data-placement="top" title="Bachillerato unificaco">
                                                                 B.unificado
                                                             </a>    
@@ -115,7 +115,7 @@
                         @endif
                 </div>
                 <div class="tab-pane fade {{ $errors->any()?'show active':'' }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    @can('crear', ioxford\Models\Periodo::class)
+                    @can('crear', iouesa\Models\Periodo::class)
                     
                     <form method="POST" action="{{ route('periodosGuardar') }}">
                         @csrf

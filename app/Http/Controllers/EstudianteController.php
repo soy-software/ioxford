@@ -1,15 +1,16 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Http\Request;
-use ioxford\Models\Estudiante;
-use ioxford\Models\Paralelo;
-use ioxford\User;
+use Illuminate\Support\Facades\Auth;
+use iouesa\Models\Estudiante;
+use iouesa\Models\Paralelo;
+use iouesa\User;
 use Illuminate\Support\Facades\DB;
-use ioxford\Http\Requests\Estudiante\RqActualizar;
-use ioxford\Http\Requests\Estudiante\RqGuardar;
-use ioxford\Imports\EstudianteImport;
+use iouesa\Http\Requests\Estudiante\RqActualizar;
+use iouesa\Http\Requests\Estudiante\RqGuardar;
+use iouesa\Imports\EstudianteImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EstudianteController extends Controller
@@ -87,6 +88,12 @@ class EstudianteController extends Controller
                 $estudiante->save();
             }
 
+            activity()
+        ->causedBy(Auth::user())
+        ->performedOn($estudiante)
+        ->log('Ingreso nuevo estudiante '.$user->identificacion);
+
+
             DB::commit();
             $request->session()->flash('success','Estudiante ingresado exitosamente');
        } catch (\Exception $th) {
@@ -102,6 +109,9 @@ class EstudianteController extends Controller
     {
         $paralelo=Paralelo::findOrFail($idParalelo);
         $periodo=$paralelo->cursoPeriodo->periodo;
+
+        
+
         return view('estudiantes.importar',['paralelo'=>$paralelo,'periodo'=>$periodo]);
     }
     public function importarEstudiante(Request $request)
@@ -109,6 +119,11 @@ class EstudianteController extends Controller
         $paralelo=Paralelo::findOrFail($request->paralelo);
         $this->authorize('actualizar', $paralelo->cursoPeriodo->periodo);
         Excel::import(new EstudianteImport($paralelo->id),$request->archivo);
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($paralelo)
+        ->log('Importo estudiantes al paralelo '.$paralelo->nombre);
+
         $request->session()->flash('success','Estudiante importados exitosamente');
         return redirect()->route('estudiantes',$request->paralelo);
     }
@@ -133,6 +148,11 @@ class EstudianteController extends Controller
         $user->save();
         
         
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($estudiante)
+        ->log('Actualizo el estudiante '.$user->identificacion);
+
         $request->session()->flash('success','Estudiante actualizado exitosamente');
         return redirect()->route('estudiantes',$estudiante->paralelo->id);
     }
@@ -144,6 +164,13 @@ class EstudianteController extends Controller
         $this->authorize('actualizar', $estudiante->paralelo->cursoPeriodo->periodo);
         try {
             $estudiante->delete();
+            
+            activity()
+        ->causedBy(Auth::user())
+        ->performedOn($estudiante)
+        ->log('Eliminino al estudiante '.$estudiante->identificacion);
+
+
             $request->session()->flash('success','Estudiante retirado');    
         } catch (\Exception $th) {
             $request->session()->flash('default','Estudiante no retirado');    

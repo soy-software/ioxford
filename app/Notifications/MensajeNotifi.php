@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Notifications;
+namespace iouesa\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Middleware;
+namespace iouesa\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 

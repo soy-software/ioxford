@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Models;
+namespace iouesa\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

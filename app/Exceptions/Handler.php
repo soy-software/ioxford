@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Exceptions;
+namespace iouesa\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

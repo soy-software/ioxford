@@ -109,6 +109,12 @@
                                 Período
                             </a>
                         </li>
+                        <li class="nav-item" id="menuRegActividades">
+                            <a class="nav-link" href="{{ route('registroActividades') }}">
+                                Registro de actividades
+                            </a>
+                        </li>
+                        
                             
 
                         @endauth

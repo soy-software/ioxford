@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\Http\Middleware;
+namespace iouesa\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

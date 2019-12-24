@@ -11,6 +11,8 @@
 |
 */
 
+use Spatie\Activitylog\Models\Activity;
+
 Route::get('/', function () {
     return view('welcome');
      // Artisan::call('cache:clear');
@@ -73,6 +75,13 @@ Route::post('/usuarios-eliminar', 'UsuariosController@eliminar')->name('eliminar
 Route::get('/usuarios-editar/{id}', 'UsuariosController@editar')->name('editarUsuario');
 Route::post('/usuarios-actualizar', 'UsuariosController@actualizar')->name('actualizarUsuario');
 
+
+// registro de actividades
+Route::get('/registro-actividades', 'RegistroActividades@index')->name('registroActividades');
+Route::get('/limpiar-registro-de-actividad', function () {
+     Activity::query()->delete();
+     return redirect()->route('registroActividades');
+})->name('limpiarRegistroActividades');
 
 // roles y permisos
 Route::namespace('Sistema')->group(function () {

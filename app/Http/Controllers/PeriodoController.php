@@ -1,10 +1,11 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
-use ioxford\Models\Periodo;
+use iouesa\Models\Periodo;
 use Illuminate\Http\Request;
-use ioxford\Models\Curso;
+use Illuminate\Support\Facades\Auth;
+use iouesa\Models\Curso;
 
 class PeriodoController extends Controller
 {
@@ -40,6 +41,11 @@ class PeriodoController extends Controller
         $cursos=Curso::all();
         $periodo->cursos()->sync($cursos->pluck('id'));
         
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($periodo)
+        ->log('Creo nuevo período '.$periodo->nombre??'');
+
         return redirect()->route('periodos')->with('success','Período ingresado exitosamente');
 
     }
@@ -56,6 +62,13 @@ class PeriodoController extends Controller
             $per->estado='Proceso';
         }
         $per->save();
+        
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($per)
+        ->log('Cambio el estado de periodo '.$per->nombre??' a'.$per->estado);
+
+
         return response()->json(['ok'=>'Actualizado exitosamente']);
     }
     public function editar($idPer)
@@ -80,6 +93,13 @@ class PeriodoController extends Controller
         $periodo->fecha_inicio=$request->fecha_inicio;
         $periodo->fecha_final=$request->fecha_final;
         $periodo->save();
+
+
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($periodo)
+        ->log('Actualizo el periodo '.$periodo->nombre??'');
+
         return redirect()->route('periodos')->with('success','Período actualizado exitosamente');
     }
 }

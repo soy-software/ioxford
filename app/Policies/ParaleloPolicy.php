@@ -1,9 +1,9 @@
 <?php
 
-namespace ioxford\Policies;
+namespace iouesa\Policies;
 
-use ioxford\User;
-use ioxford\Models\Paralelo;
+use iouesa\User;
+use iouesa\Models\Paralelo;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ParaleloPolicy
@@ -15,7 +15,7 @@ class ParaleloPolicy
     public function enviarMensaje(User $user, Paralelo $paralelo)
     {
         switch ($paralelo->cursoPeriodo->curso->tipo) {
-            case 'IN':
+            case 'EI':
                 if($user->can('Educación inicial') && $paralelo->cursoPeriodo->periodo->estado=='Proceso'){
                     return true;
                 }

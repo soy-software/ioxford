@@ -1,15 +1,15 @@
 <?php
 
-namespace ioxford\Providers;
+namespace iouesa\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use ioxford\Models\Paralelo;
-use ioxford\Models\Periodo;
-use ioxford\Policies\ParaleloPolicy;
-use ioxford\Policies\PeriodoPolicy;
-use ioxford\Policies\UserPolicy;
-use ioxford\User;
+use iouesa\Models\Paralelo;
+use iouesa\Models\Periodo;
+use iouesa\Policies\ParaleloPolicy;
+use iouesa\Policies\PeriodoPolicy;
+use iouesa\Policies\UserPolicy;
+use iouesa\User;
 
 class AuthServiceProvider extends ServiceProvider
 {

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use ioxford\Models\Curso;
+use iouesa\Models\Curso;
 
 class CursoTableSeeder extends Seeder
 {

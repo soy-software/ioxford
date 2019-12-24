@@ -1,10 +1,11 @@
 <?php
 
-namespace ioxford\Http\Controllers\Sistema;
+namespace iouesa\Http\Controllers\Sistema;
 
 use Illuminate\Http\Request;
-use ioxford\Http\Controllers\Controller;
-use ioxford\DataTables\Sistema\RolesDataTable;
+use Illuminate\Support\Facades\Auth;
+use iouesa\Http\Controllers\Controller;
+use iouesa\DataTables\Sistema\RolesDataTable;
 use Spatie\Permission\Models\Role;
 class Roles extends Controller
 {
@@ -23,7 +24,14 @@ class Roles extends Controller
         $validatedData = $request->validate([
             'rol' => 'required|unique:roles,name|max:255',
         ]);
-        Role::create(['name' => $request->rol]);
+        $role=Role::create(['name' => $request->rol]);
+
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($role)
+            ->log('Creo un rol '.$role->name??'');
+
+
         $request->session()->flash('success','Rol ingresado');
         return redirect()->route('roles');
     }
@@ -41,6 +49,12 @@ class Roles extends Controller
 
                 if($rol->name!='Administrador' && $rol->name!='Coordinador' && $rol->name!='Gestor'){
                     $rol->delete();
+                        
+                    activity()
+                ->causedBy(Auth::user())
+                ->performedOn($rol)
+                ->log('Elimino un rol '.$rol->name??'');
+
                     return response()->json(['success'=>'Rol eliminado']);
                     
                 }else {

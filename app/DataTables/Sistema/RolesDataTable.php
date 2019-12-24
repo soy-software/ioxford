@@ -1,6 +1,6 @@
 <?php
 
-namespace ioxford\DataTables\Sistema;
+namespace iouesa\DataTables\Sistema;
 
 use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Services\DataTable;

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use ioxford\User;
+use iouesa\User;
 
 class UsersTableSeeder extends Seeder
 {

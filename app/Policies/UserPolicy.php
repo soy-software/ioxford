@@ -1,8 +1,8 @@
 <?php
 
-namespace ioxford\Policies;
+namespace iouesa\Policies;
 
-use ioxford\User;
+use iouesa\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy

@@ -1,10 +1,11 @@
 <?php
 
-namespace ioxford\Http\Controllers;
+namespace iouesa\Http\Controllers;
 
 use Illuminate\Http\Request;
-use ioxford\Models\Paralelo;
-use ioxford\Models\Periodo;
+use Illuminate\Support\Facades\Auth;
+use iouesa\Models\Paralelo;
+use iouesa\Models\Periodo;
 
 class ParaleloController extends Controller
 {
@@ -33,8 +34,12 @@ class ParaleloController extends Controller
                     $cur_per->save();
                 }
             }
-       
         }
+
+        activity()
+        ->causedBy(Auth::user())
+        ->performedOn($periodo)
+        ->log('Actualizo paralelos en periodo '.$periodo->nombre??'');
         
         $request->session()->flash('success','Paralelos creado');
         
@@ -48,6 +53,12 @@ class ParaleloController extends Controller
         try {
             $paralelo->delete();
             $request->session()->flash('success','Paralelo eliminado exitosamente');
+
+            activity()
+        ->causedBy(Auth::user())
+        ->performedOn($paralelo)
+        ->log('Elimino paralelo '.$paralelo->nombre??'');
+
         } catch (\Exception $th) {
             $request->session()->flash('info','No se puede eliminar paralelo');
         }

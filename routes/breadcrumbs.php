@@ -80,6 +80,12 @@ Breadcrumbs::for('mensajeXestudiante', function ($trail,$estudiante) {
     $trail->push('Listado de mensajes', route('mensajeXestudiante',$estudiante->id));
 });
 
+// registro de actividades
+Breadcrumbs::for('registroActividades', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Registro de actividades', route('registroActividades'));
+});
+
 
 
 //D:Breadcrums de roles y permisos
