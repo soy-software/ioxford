@@ -111,7 +111,7 @@
                             <div class="col-md-4">
 
                                 <div class="card card-body mb-2">
-                                    <p class="mb-1"><strong>Seleccione plataforma</strong></p>
+                                    <p class="mb-1"><strong>Plataforma</strong></p>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="PLATAFORMA1" checked disabled >
                                         <label class="form-check-label" for="PLATAFORMA1">
@@ -125,17 +125,12 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="PLATAFORMA3" disabled>
+                                        <input class="form-check-input" type="checkbox" id="PLATAFORMA3" disabled checked>
                                         <label class="form-check-label" for="PLATAFORMA3">
                                             Whatsapp <i class="fab fa-whatsapp text-success"></i>
                                         </label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="PLATAFORMA4" disabled>
-                                        <label class="form-check-label" for="PLATAFORMA1">
-                                            Messenger <i class="fab fa-facebook-messenger text-primary"></i>
-                                        </label>
-                                    </div>
+                                    
                                     
                                 </div>
                                 <div class="card card-body mb-2">
@@ -235,7 +230,7 @@
                         text: 'Confirmar', // text for button
                         btnClass: 'btn-amber', // class for the button
                         action: function(heyThereButton){
-                            $.blockUI({message:'<h1>Espere por favor.!</h1>'});
+                            $.blockUI({message:'<img src="{{ asset('img/loading.gif') }}" class="img-fluid" alt="">'});
                             $.post( url,form.serialize())
                             .done(function( data ) {
                                 console.log(data)

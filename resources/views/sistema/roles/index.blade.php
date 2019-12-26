@@ -30,6 +30,7 @@
         <div class="table-responsive">
             {!! $dataTable->table()  !!}
         </div>
+        
     </div>
 </div>
 </div>
@@ -67,7 +68,7 @@
                         text: 'Confirmar', // text for button
                         btnClass: 'btn-amber', // class for the button
                         action: function(heyThereButton){
-                            $.blockUI({message:'<h1>Espere por favor.!</h1>'});
+                            $.blockUI({message:'<img src="{{ asset('img/loading.gif') }}" class="img-fluid" alt="">'});
                             $.post( $(arg).data('url'), { id: $(arg).data('id') })
                             .done(function( data ) {
                                 if(data.success){
