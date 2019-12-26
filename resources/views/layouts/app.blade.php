@@ -22,6 +22,8 @@
   <meta property="og:site_name" content="U.E.S.F.A" />
   <meta property="og:image" content="{{ asset('img/logo.png') }}" />
 
+  <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('fontawesome-free-5.10.1-web/css/all.min.css') }}">
