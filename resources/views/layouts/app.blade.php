@@ -109,12 +109,13 @@
                                 Período
                             </a>
                         </li>
+                        @role('DECE')
                         <li class="nav-item" id="menuRegActividades">
                             <a class="nav-link" href="{{ route('registroActividades') }}">
                                 Registro de actividades
                             </a>
                         </li>
-                        
+                        @endrole
                             
 
                         @endauth
