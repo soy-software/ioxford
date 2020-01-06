@@ -179,9 +179,10 @@ return [
         Yajra\DataTables\HtmlServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         // nexmo
-        Illuminate\Notifications\NexmoChannelServiceProvider::class,
+        // Illuminate\Notifications\NexmoChannelServiceProvider::class,
         // extras
         Barryvdh\Snappy\ServiceProvider::class,
+        
         
 
     ],
