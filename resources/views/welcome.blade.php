@@ -32,7 +32,7 @@
                       <!--/Second slide-->
                       <!--Third slide-->
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('img/sf.jpeg') }}" alt="Third slide">
+                        <img class="d-block w-100" src="{{ asset('img/inicio.jpg') }}" alt="Third slide">
                       </div>
                       <!--/Third slide-->
                     </div>
