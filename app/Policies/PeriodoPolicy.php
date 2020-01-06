@@ -13,7 +13,7 @@ class PeriodoPolicy
     public function crear(User $user)
     {
         $per=Periodo::where('estado','Proceso')->first();
-        if ($user->can('Períodos')) {
+        if (!$per && $user->can('Períodos')) {
             return true;
         }
     }

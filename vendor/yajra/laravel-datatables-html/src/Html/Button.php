@@ -2,40 +2,18 @@
 
 namespace Yajra\DataTables\Html;
 
-use Illuminate\Contracts\Auth\Access\Authorizable;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Fluent;
+use Illuminate\Contracts\Support\Arrayable;
 
 class Button extends Fluent implements Arrayable
 {
-    /**
-     * Flag to check if user is authorized to use the button.
-     *
-     * @var bool
-     */
-    protected $authorized = true;
-
-    /**
-     * Make a button if condition is true.
-     *
-     * @param bool|callable $condition
-     * @param string|array $options
-     * @return Button
-     */
-    public static function makeIf($condition, $options)
-    {
-        if (value($condition)) {
-            return static::make($options);
-        }
-
-        return static::make()->authorized(false);
-    }
+    use HasAuthorizations;
 
     /**
      * Make a new button instance.
      *
      * @param string|array $options
-     * @return Button
+     * @return static
      */
     public static function make($options = [])
     {
@@ -47,37 +25,18 @@ class Button extends Fluent implements Arrayable
     }
 
     /**
-     * Set authotization status of the button.
+     * Make a raw button that does not extend anything.
      *
-     * @param bool|callable $bool
-     * @return $this
+     * @param array $options
+     * @return static
      */
-    public function authorized($bool)
+    public static function raw($options = [])
     {
-        $this->authorized = value($bool);
-
-        return $this;
-    }
-
-    /**
-     * Make a button if condition is true.
-     *
-     * @param string $permission
-     * @param string|array $options
-     * @param Authorizable|null $user
-     * @return Button
-     */
-    public static function makeIfCan($permission, $options, Authorizable $user = null)
-    {
-        if (is_null($user)) {
-            $user = auth()->user();
+        if (is_string($options)) {
+            return new static(['text' => $options]);
         }
 
-        if ($user->can($permission)) {
-            return static::make($options);
-        }
-
-        return static::make()->authorized(false);
+        return new static($options);
     }
 
     /**
@@ -102,6 +61,41 @@ class Button extends Fluent implements Arrayable
     public function editor($value)
     {
         $this->attributes['editor'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $buttons
+     * @return $this
+     */
+    public function buttons(array $buttons)
+    {
+        foreach ($buttons as $key => $button) {
+            if ($button instanceof Arrayable) {
+                $buttons[$key] = $button->toArray();
+            }
+        }
+
+        $this->attributes['buttons'] = $buttons;
+
+        return $this;
+    }
+
+    /**
+     * @param array $buttons
+     * @return $this
+     * @see https://editor.datatables.net/examples/api/cancelButton
+     */
+    public function formButtons(array $buttons)
+    {
+        foreach ($buttons as $key => $button) {
+            if ($button instanceof Arrayable) {
+                $buttons[$key] = $button->toArray();
+            }
+        }
+
+        $this->attributes['formButtons'] = $buttons;
 
         return $this;
     }
@@ -133,6 +127,19 @@ class Button extends Fluent implements Arrayable
     }
 
     /**
+     * Set name option value.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function name($value)
+    {
+        $this->attributes['name'] = $value;
+
+        return $this;
+    }
+
+    /**
      * Set columns option value.
      *
      * @param mixed $value
@@ -159,16 +166,56 @@ class Button extends Fluent implements Arrayable
     }
 
     /**
-     * Convert the Fluent instance to an array.
+     * Set action to submit the form.
      *
-     * @return array
+     * @return \Yajra\DataTables\Html\Button
      */
-    public function toArray()
+    public function actionSubmit()
     {
-        if ($this->authorized) {
-            return parent::toArray();
+        $this->attributes['action'] = 'function() { this.submit(); }';
+
+        return $this;
+    }
+
+    /**
+     * Set action option value.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function action($value)
+    {
+        if (substr($value, 0, 8) == 'function') {
+            $this->attributes['action'] = $value;
+        } else {
+            $this->attributes['action'] = "function(e, dt, node, config) { $value }";
         }
 
-        return [];
+        return $this;
+    }
+
+    /**
+     * Set editor class action handler.
+     *
+     * @param string $action
+     * @return \Yajra\DataTables\Html\Button
+     */
+    public function actionHandler($action)
+    {
+        $this->attributes['action'] = "function() { this.submit(null, null, function(data) { data.action = '{$action}'; return data; }) }";
+
+        return $this;
+    }
+
+    /**
+     * Set action to close the form.
+     *
+     * @return \Yajra\DataTables\Html\Button
+     */
+    public function actionClose()
+    {
+        $this->attributes['action'] = 'function() { this.close(); }';
+
+        return $this;
     }
 }

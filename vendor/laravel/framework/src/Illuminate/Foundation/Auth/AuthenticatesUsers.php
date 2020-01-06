@@ -119,18 +119,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        // if ($user->hasRole('DECE')) {
-        //     return redirect()->intended($this->redirectPath());
-            
-        // } else {
-        //     $this->logout($request);
-
-        //     return redirect()->back()
-        //         ->withInput($request->only($this->username(), 'remember'))
-        //         ->withErrors([
-        //             $this->username() => 'Acceso restringido'
-        //         ]);
-        // }
+        //
     }
 
     /**

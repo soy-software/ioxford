@@ -2,9 +2,9 @@
 
 namespace Illuminate\Notifications\Channels;
 
-use Nexmo\Client as NexmoClient;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\NexmoMessage;
+use Illuminate\Notifications\Notification;
+use Nexmo\Client as NexmoClient;
 
 class NexmoSmsChannel
 {
@@ -54,7 +54,7 @@ class NexmoSmsChannel
             $message = new NexmoMessage($message);
         }
 
-        return $this->nexmo->message()->send([
+        return ($message->client ?? $this->nexmo)->message()->send([
             'type' => $message->type,
             'from' => $message->from ?: $this->from,
             'to' => $to,
