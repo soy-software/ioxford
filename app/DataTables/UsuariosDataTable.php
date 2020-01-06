@@ -29,7 +29,7 @@ class UsuariosDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->select($this->getColumns());
+        return $model->newQuery()->notRole('ESTUDIANTE')->select($this->getColumns());
     }
 
     /**
