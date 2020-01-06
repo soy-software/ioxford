@@ -47,7 +47,7 @@ class Roles extends Controller
                 return response()->json(['default'=>'No se puede eliminar rol, ya que existe usuarios asignados']);
             }else{
 
-                if($rol->name!='Administrador' && $rol->name!='Coordinador' && $rol->name!='Gestor'){
+                if($rol->name!='DECE' && $rol->name!='ESTUDIANTE' && $rol->name!='INSPECTOR DOS' && $rol->name!='INSPECTOR UNO' ){
                     $rol->delete();
                         
                     activity()
