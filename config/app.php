@@ -182,6 +182,7 @@ return [
         // Illuminate\Notifications\NexmoChannelServiceProvider::class,
         // extras
         Barryvdh\Snappy\ServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
         
         
 
