@@ -42,6 +42,8 @@ class Mensajes extends Controller
                 foreach ($estudiantes as $estudiante) {
                     
                     $nombre=Str::limit($estudiante->user->name,25,'');
+                    
+                    
                     if($tipomsj=='Ninguna'){
                         $texto=$request->extra;
                     }else{
@@ -50,6 +52,23 @@ class Mensajes extends Controller
                     
                     $data = array('email' =>$estudiante->user->email_representante??'' ,'extra'=>$request->extra,'texto'=>$texto,'tipo'=>$tipomsj );
                     $estudiante->user->notify(new MensajeNotifi($data));
+
+                    $data_api = [
+                        'phone' => $estudiante->user->celular_representante,
+                        'body' => $texto,
+                    ];
+                    $json_api = json_encode($data_api);
+                    $url_api = 'https://eu2.chat-api.com/instance91127/sendMessage?token=s5wpwbdhvpugwwph';
+                    $options = stream_context_create(['http' => [
+                            'method'  => 'POST',
+                            'header'  => 'Content-type: application/json',
+                            'content' => $json_api
+                        ]
+                    ]);
+                   file_get_contents($url_api, false, $options);
+
+
+
                     $mensaje=new Mensaje();
                     $mensaje->fecha_id=$fecha->id;
                     $mensaje->estudiante_id=$estudiante->id;
@@ -61,11 +80,12 @@ class Mensajes extends Controller
                     $mensaje->save();
                 }    
             }
+            
 
             activity()
-        ->causedBy(Auth::user())
-        ->performedOn($paralelo)
-        ->log('Envio mensaje en paralelo ',$paralelo->nombre);
+            ->causedBy(Auth::user())
+            ->performedOn($paralelo)
+            ->log('Envio mensaje en paralelo ',$paralelo->nombre);
 
             DB::commit();
             return response()->json(['success'=>'Mensaje enviado exitosamente']);

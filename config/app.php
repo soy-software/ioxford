@@ -15,6 +15,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // CHAT API
+
+    'chatapi'=>env('CHAT_API',''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

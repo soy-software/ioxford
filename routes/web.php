@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 // perfil de usuario
 Route::get('/mi-perfil', 'HomeController@perfil')->name('miPerfil');
 Route::post('/mi-perfil-actualizar', 'HomeController@actualizarMiPerfil')->name('actualizarMiPerfil');
