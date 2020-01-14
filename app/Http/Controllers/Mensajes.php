@@ -58,7 +58,7 @@ class Mensajes extends Controller
                         'body' => $texto,
                     ];
                     $json_api = json_encode($data_api);
-                    $url_api = 'https://eu2.chat-api.com/instance91127/sendMessage?token=s5wpwbdhvpugwwph';
+                    $url_api = 'https://eu53.chat-api.com/instance91893/sendMessage?token=2b4vhj77ohhdevuh';
                     $options = stream_context_create(['http' => [
                             'method'  => 'POST',
                             'header'  => 'Content-type: application/json',
@@ -91,7 +91,7 @@ class Mensajes extends Controller
             return response()->json(['success'=>'Mensaje enviado exitosamente']);
         } catch (\Exception $th) {
             DB::rollback();
-            return response()->json(['info'=>'Ocurrio un error, vuelva intentar '.$th->getMessage()]);
+            return response()->json(['info'=>'Ocurrio un error, vuelva intentar ']);
         }
 
     }
