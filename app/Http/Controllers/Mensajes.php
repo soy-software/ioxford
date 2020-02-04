@@ -58,7 +58,7 @@ class Mensajes extends Controller
                         'body' => $texto,
                     ];
                     $json_api = json_encode($data_api);
-                    $url_api = 'https://eu53.chat-api.com/instance91893/sendMessage?token=2b4vhj77ohhdevuh';
+                    $url_api = 'https://eu96.chat-api.com/instance97109/sendMessage?token=fh3xnphb2z412yyy';
                     $options = stream_context_create(['http' => [
                             'method'  => 'POST',
                             'header'  => 'Content-type: application/json',

@@ -188,8 +188,6 @@ return [
         Barryvdh\Snappy\ServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
         
-        Tavo\EcLaravelValidator\EcValidatorServiceProvider::class,
-        
 
     ],
 
