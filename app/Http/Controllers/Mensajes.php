@@ -29,7 +29,7 @@ class Mensajes extends Controller
         try {
             DB::beginTransaction();
             $estudiantes=Estudiante::whereIn('id',$request->estudiante)->get();
-            
+
             $fecha=Fecha::where(['paralelo_id'=>$paralelo->id,'fecha'=>Carbon::now()->toDateString()])->first();
             if(!$fecha){
                 $fecha=new Fecha;
@@ -40,16 +40,16 @@ class Mensajes extends Controller
 
             foreach ($request->tipoMensaje as $tipomsj) {
                 foreach ($estudiantes as $estudiante) {
-                    
+
                     $nombre=Str::limit($estudiante->user->name,25,'');
-                    
-                    
+
+
                     if($tipomsj=='Ninguna'){
                         $texto=$request->extra;
                     }else{
                         $texto='Sr, Representante el estudiante '.$nombre.'. Ha incurrido una falta en: '.$tipomsj.', acercarse al DECE SAN FRANCISCO DE ASIS';
                     }
-                    
+
                     $data = array('email' =>$estudiante->user->email_representante??'' ,'extra'=>$request->extra,'texto'=>$texto,'tipo'=>$tipomsj );
                     $estudiante->user->notify(new MensajeNotifi($data));
 
@@ -78,9 +78,9 @@ class Mensajes extends Controller
                     $mensaje->estado=true;
                     $mensaje->enviadoPor=Auth::id();
                     $mensaje->save();
-                }    
+                }
             }
-            
+
 
             activity()
             ->causedBy(Auth::user())
@@ -119,7 +119,7 @@ class Mensajes extends Controller
 
     public function estado(Request $request)
     {
-        
+
         $request->validate([
             'mensaje' => 'required|exists:mensajes,id',
         ]);
@@ -162,5 +162,5 @@ class Mensajes extends Controller
         $pdf = PDF::loadView('mensajes.pdfListaMensajes', ['fecha'=>$fecha]);
         return $pdf->inline('lista_de_mensajes.pdf');
     }
- 
+
 }

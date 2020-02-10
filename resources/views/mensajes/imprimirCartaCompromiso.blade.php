@@ -10,7 +10,7 @@
             border-collapse: collapse;
             width: 100%
         }
-            
+
         table, th, td {
         border: 1px solid black;
         }
@@ -33,7 +33,7 @@
                 </h4>
             </td>
             <td class="noBorder">
-                
+
                 <img src="{!! public_path('img/ministerio.jpg') !!}" alt="" width="120px;" style="text-align: right;">
             </td>
         </table>
@@ -41,7 +41,7 @@
         <p style="text-align: right">
             Salcedo {{ Carbon\Carbon::now() }} <br>
            Curso: <strong>{{ $estudiante->paralelo->cursoPeriodo->curso->nombre }}</strong>, Paralelo: <strong>{{ $estudiante->paralelo->nombre }}</strong>
-            
+
         </p>
         <h2 style="text-align: center"><strong>CARTA DE COMPROMISO</strong></h2>
         <h3><strong>DIMENSIÓN A: </strong> ACOMPAÑAMIENTO INTEGRAL</h3>
@@ -64,10 +64,10 @@
             </tr>
             <tr>
                 <th>
-                    DE: 
+                    DE:
                 </th>
                 <th>
-                    VICERRECTORADO 
+                    VICERRECTORADO
                 </th>
             </tr>
             <tr>
@@ -81,9 +81,9 @@
         </table>
         <h3><strong>BASE LEGAL:</strong></h3>
         <p style="text-align: justify">
-            Capítulo IV de las acciones de evaluación, retroalimentación y refuerzo académico <strong>Art. 207.- Reuniones con los representantes legales de los estudiantes.</strong> El docente debe convocar a los representantes legales de los estudiantes a por lo menos dos (2) reuniones al año para determinar estrategias conjuntas, a fin de promover el mejoramiento académico de sus representados. Se debe dejar constancia escrita de las recomendaciones y sugerencias que se formulen para el mejoramiento académico.
+            Recibir informes periódicos sobre el progreso académico de sus representantes asi como de todas las situaciones que se presenten en la institución educativa y que requieran de su conocimiento.
         </p>
-        
+
         @if (count($mensajes)>0)
         <p>Listado de notificaciones</p>
         <div class="table-responsive">
@@ -101,7 +101,7 @@
                     @php($i++)
                     <tr>
                         <th scope="row">{{ $i }}</th>
-                       
+
                         <td>
                             {{ $msg->tipo }}
                         </td>
@@ -116,16 +116,16 @@
                 </tbody>
             </table>
         </div>
-        
+
         @else
             <div class="alert alert-primary" role="alert">
                 <strong>No existe mensajes</strong>
             </div>
         @endif
         <br><br>
-    
+
         <table style="border-collapse: collapse; border: none;">
-            
+
             <tr>
                 <td class="noBorder" style="text-align: center;">
                     <p>

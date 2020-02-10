@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    
+
                     @role('DECE')
                     <button type="button" class="btn btn-amber float-right" data-url="{{ route('imprimirCartaCompromiso',$estudiante->id) }}" onclick="imprimirCartaCompromiso(this);">Imprimir carta de compromiso</button>
                     @endrole
@@ -15,7 +15,7 @@
 
                 <div class="card-body">
                     @if (count($estudiante->mensajes)>0)
-                        
+
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm" id="tableMensaje">
                             <thead>
@@ -75,7 +75,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     @else
                         <div class="alert alert-primary" role="alert">
                             <strong>No existe mensajes</strong>
@@ -105,7 +105,7 @@
 {{--  toogle  --}}
 <link href="{{ asset('admin/bootstrap4-toggle-3.5.0/css/bootstrap4-toggle.min.css') }}" rel="stylesheet">
 <script src="{{ asset('admin/bootstrap4-toggle-3.5.0/js/bootstrap4-toggle.min.js') }}"></script>
-    
+
 @endprepend
 
 @push('scriptsFooter')
@@ -119,19 +119,19 @@
 
         $('.toggle-estado').change(function() {
             var per=$(this).val();
-            
+
             $.post("{{ route('estadoMensaje') }}",{mensaje:per})
             .done(function(data) {
                 if(data.ok){
                     $.notify(data.ok,"success");
                 }
-                
+
             })
             .fail(function(error) {
                 $.notify("Ocurrrio un error","error");
             })
             .always(function() {
-                
+
             });
         });
 
