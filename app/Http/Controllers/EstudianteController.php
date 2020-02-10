@@ -23,29 +23,29 @@ class EstudianteController extends Controller
     {
         switch ($tipo) {
             case 'EI':
-                $this->authorize('Educación inicial', Periodo::class);   
+                $this->authorize('Educación inicial', Periodo::class);
                 break;
-            
+
             case 'BE':
-                $this->authorize('Básica elemental', Periodo::class);   
+                $this->authorize('Básica elemental', Periodo::class);
                 break;
             case 'BM':
-                $this->authorize('Básica media', Periodo::class);   
+                $this->authorize('Básica media', Periodo::class);
                 break;
             case 'BS':
-                $this->authorize('Básica superior', Periodo::class);   
+                $this->authorize('Básica superior', Periodo::class);
                 break;
             case 'BU':
-                $this->authorize('Bachillerato unificado', Periodo::class);   
+                $this->authorize('Bachillerato unificado', Periodo::class);
                 break;
             default :
-            $this->authorize('******', Periodo::class);   
+            $this->authorize('******', Periodo::class);
             break;
         }
     }
     public function index($paralelo)
     {
-        
+
         $paralelo=Paralelo::findOrFail($paralelo);
         $this->accesso($paralelo->cursoPeriodo->curso->tipo);
         $periodo=$paralelo->cursoPeriodo->periodo;
@@ -79,7 +79,7 @@ class EstudianteController extends Controller
                 $user->save();
                 $user->assignRole('ESTUDIANTE');
             }
-            
+
             $estudiante=Estudiante::where(['user_id'=>$user->id,'paralelo_id'=>$paralelo->id])->first();
             if(!$estudiante){
                 $estudiante=new Estudiante();
@@ -102,7 +102,7 @@ class EstudianteController extends Controller
        }
 
         return redirect()->route('estudiantes',$request->paralelo);
-        
+
     }
 
     public function importar($idParalelo)
@@ -110,7 +110,7 @@ class EstudianteController extends Controller
         $paralelo=Paralelo::findOrFail($idParalelo);
         $periodo=$paralelo->cursoPeriodo->periodo;
 
-        
+
 
         return view('estudiantes.importar',['paralelo'=>$paralelo,'periodo'=>$periodo]);
     }
@@ -133,7 +133,7 @@ class EstudianteController extends Controller
         $estudiante=Estudiante::findOrFail($idEst);
         return view('estudiantes.editar',['est'=>$estudiante]);
     }
-    
+
     public function actualizar(RqActualizar $request)
     {
         $estudiante=Estudiante::findOrFail($request->estudiante);
@@ -146,8 +146,8 @@ class EstudianteController extends Controller
         $user->celular_representante=$request->celularRepresentante;
         $user->email_representante=$request->emailRepresentante;
         $user->save();
-        
-        
+
+
         activity()
         ->causedBy(Auth::user())
         ->performedOn($estudiante)
@@ -159,21 +159,21 @@ class EstudianteController extends Controller
 
     public function retirar(Request $request, $idEst)
     {
-        
+
         $estudiante=Estudiante::findOrFail($idEst);
         $this->authorize('actualizar', $estudiante->paralelo->cursoPeriodo->periodo);
         try {
             $estudiante->delete();
-            
+
             activity()
         ->causedBy(Auth::user())
         ->performedOn($estudiante)
         ->log('Eliminino al estudiante '.$estudiante->identificacion);
 
 
-            $request->session()->flash('success','Estudiante retirado');    
+            $request->session()->flash('success','Estudiante retirado');
         } catch (\Exception $th) {
-            $request->session()->flash('default','Estudiante no retirado');    
+            $request->session()->flash('default','Estudiante no retirado');
         }
         return redirect()->route('estudiantes',$estudiante->paralelo->id);
     }

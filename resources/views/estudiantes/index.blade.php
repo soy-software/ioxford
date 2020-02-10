@@ -20,7 +20,7 @@
             <a class="float-right mr-3" href="{{ route('importarEstudianteExcel',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Importar estudiante desde excel">
                     <i class="fas fa-file-import"></i> Importar estudiante
             </a>
-            
+
             <a class="float-right mr-3" href="{{ route('nuevoEstudiante',$paralelo->id) }}" data-toggle="tooltip" data-placement="top" title="Nuevo estudiante" >
                 <i class="fas fa-user-plus"></i> Nuevo estudiante
             </a>
@@ -62,19 +62,19 @@
                                                 <td>{{ $est->celular_representante }}</td>
                                                 <td>{{ $est->email_representante }}</td>
                                                 <td>
-                                                    
+
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                                        
-                                                        
+
+
                                                         <a href="{{ route('mensajeXestudiante',$est->estudiante->id) }}" class="btn purple darken-3 text-white" data-toggle="tooltip" data-placement="top" title="Generar carta de compromiso">
                                                             <i class="fas fa-sticky-note"></i>
                                                         </a>
-                                                        
+
 
 
                                                         @can('actualizar', $paralelo->cursoPeriodo->periodo)
-                                                            
-                                                        
+
+
                                                         <a href="{{ route('editarEstudiante',$est->estudiante->id) }}" class="btn btn-amber" data-toggle="tooltip" data-placement="top" title="Editar">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
@@ -93,12 +93,12 @@
                                                     @endcan
 
                                                 </td>
-                                                
-                                            </tr> 
-                                        
+
+                                            </tr>
+
                                         @endforeach
-                                            
-                                        
+
+
                                         </tbody>
                                     </table>
                                     @else
@@ -124,14 +124,14 @@
                                             Correo electrónico <i class="fas fa-envelope-open-text"></i>
                                         </label>
                                     </div>
-                                    <div class="form-check">
+                                    {{--  <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="PLATAFORMA3" disabled checked>
                                         <label class="form-check-label" for="PLATAFORMA3">
                                             Whatsapp <i class="fab fa-whatsapp text-success"></i>
                                         </label>
-                                    </div>
-                                    
-                                    
+                                    </div>  --}}
+
+
                                 </div>
                                 <div class="card card-body mb-2">
                                     <p class="mb-1"><strong>Descripción solo para mensaje de texto</strong></p>
@@ -181,7 +181,7 @@
                     </form>
                 </div>
             </div>
-          
+
       </div>
   </div>
 </div>
@@ -203,14 +203,14 @@
 
 @push('scriptsFooter')
    <script>
-       
+
         $('#menuPeriodo').addClass('active');
-        
+
         function quitarAlert(){
             $('.alert').hide();
-            $(".listError").html(''); 
+            $(".listError").html('');
         }
-   
+
         $("#enviarMensajeForm").submit(function(e) {
 
             e.preventDefault();
@@ -254,7 +254,7 @@
                                         errores+='<li class="font-weight-semibold">' + v + '</li>';
                                     });
                                 });
-                
+
                                 if (errores) {
                                     $(".listError").append(errores);
                                 }else if (err) {
@@ -263,7 +263,7 @@
                             });
                         }
                     },
-                    
+
                     cancelar: {
                         text: 'Cancelar', // text for button
                         btnClass: 'btn-secondary', // class for the button
@@ -272,8 +272,8 @@
                     }
                 }
             });
-        
-        
+
+
         });
 
         $('#estudiante').DataTable({
@@ -322,7 +322,7 @@
                             window.location.replace($(arg).data('url'));
                         }
                     },
-                    
+
                     cancelar: {
                         text: 'Cancelar', // text for button
                         btnClass: 'btn-secondary', // class for the button

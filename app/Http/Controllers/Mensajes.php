@@ -53,19 +53,19 @@ class Mensajes extends Controller
                     $data = array('email' =>$estudiante->user->email_representante??'' ,'extra'=>$request->extra,'texto'=>$texto,'tipo'=>$tipomsj );
                     $estudiante->user->notify(new MensajeNotifi($data));
 
-                    $data_api = [
-                        'phone' => $estudiante->user->celular_representante,
-                        'body' => $texto,
-                    ];
-                    $json_api = json_encode($data_api);
-                    $url_api = 'https://eu96.chat-api.com/instance97109/sendMessage?token=fh3xnphb2z412yyy';
-                    $options = stream_context_create(['http' => [
-                            'method'  => 'POST',
-                            'header'  => 'Content-type: application/json',
-                            'content' => $json_api
-                        ]
-                    ]);
-                   file_get_contents($url_api, false, $options);
+                //     $data_api = [
+                //         'phone' => $estudiante->user->celular_representante,
+                //         'body' => $texto,
+                //     ];
+                //     $json_api = json_encode($data_api);
+                //     $url_api = 'https://eu96.chat-api.com/instance97109/sendMessage?token=fh3xnphb2z412yyy';
+                //     $options = stream_context_create(['http' => [
+                //             'method'  => 'POST',
+                //             'header'  => 'Content-type: application/json',
+                //             'content' => $json_api
+                //         ]
+                //     ]);
+                //    file_get_contents($url_api, false, $options);
 
 
 
